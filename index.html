@@ -6,700 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Portuguese With Kaique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --primary: #2e7d32;
-            --primary-light: #60ad5e;
-            --primary-dark: #005005;
-            --secondary: #ff8f00;
-            --background: #f5f5f5;
-            --surface: #ffffff;
-            --text-primary: #212121;
-            --text-secondary: #757575;
-            --error: #c62828;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--background);
-            padding: 0;
-            margin: 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header Styles */
-        .header {
-            position: relative;
-            margin-bottom: 40px;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-        }
-
-        .header-cover {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .header-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 30px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            color: white;
-        }
-
-        .header-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .header-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        /* Card Styles */
-        .card {
-            background-color: var(--surface);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            margin-bottom: 30px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            padding: 20px;
-            background-color: var(--primary);
-            color: white;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .card-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .card-header .toggle-icon {
-            transition: var(--transition);
-        }
-
-        .card-header.collapsed .toggle-icon {
-            transform: rotate(-90deg);
-        }
-
-        .card-body {
-            padding: 20px;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .card-body.collapsed {
-            max-height: 0;
-            padding: 0;
-        }
-
-        /* List Styles */
-        .numbered-list,
-        .bulleted-list {
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .numbered-list li,
-        .bulleted-list li {
-            margin-bottom: 10px;
-            padding-left: 10px;
-            position: relative;
-        }
-
-        .numbered-list li::marker {
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .bulleted-list li::marker {
-            color: var(--secondary);
-        }
-
-        /* Audio Button Styles */
-        .audio-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            margin-left: 10px;
-            transition: var(--transition);
-        }
-
-        .audio-btn:hover {
-            background-color: var(--primary-dark);
-            transform: scale(1.1);
-        }
-
-        .audio-btn i {
-            font-size: 12px;
-        }
-
-        .phrase-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        /* Bookmark Styles */
-        .bookmark {
-            display: flex;
-            border: 1px solid #e0e0e0;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            margin-bottom: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        .bookmark:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .bookmark-image {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .bookmark-info {
-            padding: 15px;
-            flex-grow: 1;
-        }
-
-        .bookmark-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-
-        .bookmark-description {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .bookmark-href {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-        }
-
-        .bookmark-href .icon {
-            margin-right: 5px;
-        }
-
-        /* Section Styles */
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-light);
-        }
-
-        /* Utility Classes */
-        .highlight {
-            background-color: rgba(255, 215, 0, 0.2);
-            padding: 2px 4px;
-            border-radius: 4px;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-20 {
-            margin-top: 20px;
-        }
-
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-title {
-                font-size: 2rem;
-            }
-
-            .header-cover {
-                height: 200px;
-            }
-
-            .bookmark {
-                flex-direction: column;
-            }
-
-            .bookmark-image {
-                width: 100%;
-                height: 150px;
-            }
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate {
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            border: none;
-            outline: none;
-        }
-
-        /* Dark Mode Styles */
-        body.dark-mode {
-            --background: #121212;
-            --surface: #1e1e1e;
-            --text-primary: #e0e0e0;
-            --text-secondary: #9e9e9e;
-            --primary: #4caf50;
-            --primary-light: #6fbf73;
-            --primary-dark: #357a38;
-        }
-
-        body.dark-mode .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        body.dark-mode .bookmark {
-            border-color: #333;
-        }
-
-        /* Progress Indicator */
-        .progress-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: transparent;
-            z-index: 1000;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background-color: var(--primary);
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 140px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--secondary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            border: none;
-            outline: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-        }
-
-        /* Search Bar */
-        .search-container {
-            margin: 20px 0;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
-        }
-
-        /* Print Styles */
-        @media print {
-
-            .theme-toggle,
-            .back-to-top,
-            .progress-container,
-            .audio-btn {
-                display: none;
-            }
-
-            .card-header {
-                background-color: white !important;
-                color: black !important;
-            }
-
-            .card-body {
-                max-height: none !important;
-            }
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --primary-light: #60ad5e;
-            --primary-dark: #005005;
-            --secondary: #ff8f00;
-            --background: #f5f5f5;
-            --surface: #ffffff;
-            --text-primary: #212121;
-            --text-secondary: #757575;
-            --error: #c62828;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--background);
-            padding: 0;
-            margin: 0;
-        }
-
-        /* ========== MENU DE NAVEGAÇÃO ========== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--surface);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 15px 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo i {
-            margin-right: 10px;
-            color: var(--secondary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 5px 0;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            cursor: pointer;
-        }
-
-        /* ========== HERO SECTION ========== */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            margin-top: 60px;
-            /* Para compensar o navbar fixo */
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: var(--secondary);
-            color: var(--text-primary);
-        }
-
-        .btn-secondary:hover {
-            background: #e67e00;
-        }
-
-        /* ========== BOTÃO DO WHATSAPP ========== */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 999;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Restante do seu CSS existente... */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header Styles */
-        .header {
-            position: relative;
-            margin-bottom: 40px;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-        }
-
-        /* ... (mantenha todo o resto do seu CSS existente) ... */
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--surface);
-                flex-direction: column;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 10px 0;
-                text-align: center;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .whatsapp-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="icon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -707,7 +15,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <i class="fas fa-language"></i>
+                <img src="icon.svg" width="40" alt="Logo">
                 <span>Learning Portuguese</span>
             </a>
 
@@ -716,10 +24,10 @@
             </button>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#verbs">Verbos</a></li>
-                <li><a href="#words">Palavras</a></li>
-                <li><a href="#phrases">Frases</a></li>
+                <li><a href="#home">home</a></li>
+                <li><a href="#verbs">verbs</a></li>
+                <li><a href="#words">words</a></li>
+                <li><a href="#phrases">phrases</a></li>
                 <li><a href="#podcasts">Podcasts</a></li>
             </ul>
         </div>
@@ -1572,7 +880,7 @@
 
         <div class="card animate" style="animation-delay: 0.2s" id="words">
             <div class="card-header" id="wordsHeader">
-                <h2><i class="fas fa-list-ul mr-10"></i> 100 palavras mais frequentemente usadas</h2>
+                <h2><i class="fas fa-list-ul mr-10"></i> 100 palavras mais frequentemente usadas | 100 Most Frequently Used Words</h2>
                 <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="card-body" id="wordsBody">
@@ -2386,7 +1694,7 @@
 
         <div class="card animate" style="animation-delay: 0.3s" id="phrases">
             <div class="card-header" id="phrasesHeader">
-                <h2><i class="fas fa-comments mr-10"></i> Frases úteis</h2>
+                <h2><i class="fas fa-comments mr-10"></i> Frases úteis | Useful phrases</h2>
                 <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="card-body" id="phrasesBody">
@@ -2478,7 +1786,7 @@
                         <div class="phrase-container">
                             <span><strong>Bom dia.</strong> - Good morning.</span>
                             <button class="audio-btn" onclick="playAudio('Bom dia')">
-                            <i class="fas fa-volume-up"></i>
+                                <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
                     </li>
@@ -2486,7 +1794,7 @@
                         <div class="phrase-container">
                             <span><strong>'Dia.</strong> - Morning. (informal)</span>
                             <button class="audio-btn" onclick="playAudio('Dia')">
-                            <i class="fas fa-volume-up"></i>
+                                <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
                     </li>
@@ -3523,30 +2831,41 @@
 
         <div class="card animate" style="animation-delay: 0.4s">
             <div class="card-header" id="whyHeader">
-                <h2><i class="fas fa-question-circle mr-10"></i> Pra que essas listas em português também?</h2>
-                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            <h2><i class="fas fa-question-circle mr-10"></i> Pra que essas listas em português também?</h2>
+            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="card-body" id="whyBody">
-                <p>O objetivo de fazer essas listas em português é te dar uma ideia de quais verbos, palavras e frases
-                    você deveria priorizar aprender pra começar num outro idioma que não seja nenhum dos 5 acima com
-                    maior eficiência.</p>
-                <p>Exemplos do que você pode fazer: <span class="highlight">copiar essas listas uma por vez, colocar no
-                        ChatGPT ou outra inteligência artificial de sua preferência e pedir para que traduza a lista
-                        para o idioma que você quer. Caso o idioma tenha um alfabeto diferente, como o japonês, russo ou
-                        mandarim, peça a inteligência artificial para incluir a escrita no alfabeto do idioma e no
-                        alfabeto romano também.</span></p>
-                <p><strong>Prompts para você copiar e colar:</strong></p>
-                <p><strong>1. Adicione as traduções de todas essas palavras em (idioma) com a escrita no alfabeto dele e
-                        no alfabeto romano também.</strong></p>
-                <p><strong>2. Adicione as traduções de todas essas frases em (idioma) com a escrita no alfabeto dele e
-                        no alfabeto romano também.</strong></p>
-                <p>Para praticar a pronúncia delas, faça o seguinte: depois de receber as traduções, copie a tradução
-                    <span class="highlight">no alfabeto próprio do idioma</span>, vá no site ElevenLabs ou no site/app
-                    NaturalReader, escolha o idioma que você está aprendendo na seleção de vozes e cole a tradução no
-                    espaço de texto. Dê o play quantas vezes for necessário até você entender como se deve pronunciar, e
-                    aí tente imitar o mais igual possível. Obviamente sua pronúncia não será perfeita no início, mas se
-                    isso se tornar uma prática diária na sua rotina, você SEM DÚVIDA conseguirá progredir MUITO rápido.
-                    Basta cultivar o hábito!</p>
+            <p>O objetivo de fazer essas listas em português é te dar uma ideia de quais verbos, palavras e frases
+                você deveria priorizar aprender pra começar num outro idioma que não seja nenhum dos 5 acima com
+                maior eficiência.</p>
+            <p>Exemplos do que você pode fazer: <span class="highlight">copiar essas listas uma por vez, colocar no
+                ChatGPT ou outra inteligência artificial de sua preferência e pedir para que traduza a lista
+                para o idioma que você quer. Caso o idioma tenha um alfabeto diferente, como o japonês, russo ou
+                mandarim, peça a inteligência artificial para incluir a escrita no alfabeto do idioma e no
+                alfabeto romano também.</span></p>
+            <p><strong>Prompts para você copiar e colar:</strong></p>
+            <p><strong>1. Adicione as traduções de todas essas palavras em (idioma) com a escrita no alfabeto dele e
+                no alfabeto romano também.</strong></p>
+            <p><strong>2. Adicione as traduções de todas essas frases em (idioma) com a escrita no alfabeto dele e
+                no alfabeto romano também.</strong></p>
+            <p>Para praticar a pronúncia delas, faça o seguinte: depois de receber as traduções, copie a tradução
+                <span class="highlight">no alfabeto próprio do idioma</span>, vá no site ElevenLabs ou no site/app
+                NaturalReader, escolha o idioma que você está aprendendo na seleção de vozes e cole a tradução no
+                espaço de texto. Dê o play quantas vezes for necessário até você entender como se deve pronunciar, e
+                aí tente imitar o mais igual possível. Obviamente sua pronúncia não será perfeita no início, mas se
+                isso se tornar uma prática diária na sua rotina, você SEM DÚVIDA conseguirá progredir MUITO rápido.
+                Basta cultivar o hábito!
+            </p>
+            <hr>
+            <div class="translation">
+                <h3><i class="fas fa-globe mr-10"></i> Why are these lists in Portuguese too?</h3>
+                <p>The purpose of making these lists in Portuguese is to give you an idea of which verbs, words, and phrases you should prioritize learning to start another language (not one of the five above) more efficiently.</p>
+                <p>Examples of what you can do: <span class="highlight">copy these lists one at a time, paste them into ChatGPT or another AI of your choice, and ask it to translate the list into the language you want. If the language has a different alphabet, like Japanese, Russian, or Mandarin, ask the AI to include the writing in both the language's alphabet and the Roman alphabet.</span></p>
+                <p><strong>Prompts for you to copy and paste:</strong></p>
+                <p><strong>1. Add the translations of all these words in (language) with the writing in its alphabet and in the Roman alphabet too.</strong></p>
+                <p><strong>2. Add the translations of all these phrases in (language) with the writing in its alphabet and in the Roman alphabet too.</strong></p>
+                <p>To practice pronunciation, do the following: after receiving the translations, copy the translation <span class="highlight">in the language's own alphabet</span>, go to the ElevenLabs website or the NaturalReader site/app, choose the language you are learning in the voice selection, and paste the translation in the text box. Play it as many times as needed until you understand how it should be pronounced, then try to imitate it as closely as possible. Obviously, your pronunciation won't be perfect at first, but if this becomes a daily practice in your routine, you will DEFINITELY progress VERY quickly. Just build the habit!</p>
+            </div>
             </div>
         </div>
 
@@ -3702,7 +3021,8 @@
                         <li>Com os podcasts mais básicos, repita as palavras e frases que disserem no idioma. Alguns
                             desses podcasts para iniciantes absolutos incluem pausas que indicam quando você deve
                             repetir, então não deixe-as passar em branco. Repita sempre que as pausas ocorrerem e
-                            <strong>sempre procure falar exatamente como ouviu</strong>.</li>
+                            <strong>sempre procure falar exatamente como ouviu</strong>.
+                        </li>
                         <li>Toda vez que ouvir essas palavras e frases nos podcasts mais fáceis, <strong>se pergunte
                                 como são escritas</strong>. "Chute" mentalmente como é a escrita delas, e depois
                             pesquise no Google Tradutor. Basta ir ao Google Tradutor, colocar do idioma para português e
@@ -3717,7 +3037,7 @@
     </div>
 
     <!-- Botão do WhatsApp -->
-    <a href="https://wa.me/SEUNUMERODETELEFONE" class="whatsapp-btn" target="_blank">
+    <a href="https://wa.me/573012343502" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -3731,137 +3051,8 @@
         <!-- ... (todo o resto do seu conteúdo) ... -->
     </div>
 
+    <script src="js/app.js"></script>
     <script>
-
-        // Toggle card content
-        document.querySelectorAll('.card-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const body = document.getElementById(header.id.replace('Header', 'Body'));
-                header.classList.toggle('collapsed');
-                body.classList.toggle('collapsed');
-            });
-        });
-
-        // Theme toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = themeToggle.querySelector('i');
-            if (document.body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        });
-
-        // Scroll progress indicator
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollProgress = (scrollTop / scrollHeight) * 100;
-            document.getElementById('progressBar').style.width = scrollProgress + '%';
-
-            // Show/hide back to top button
-            const backToTop = document.getElementById('backToTop');
-            if (scrollTop > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        // Back to top button
-        document.getElementById('backToTop').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            if (searchTerm.length < 2) return;
-
-            // Search through all content
-            const cards = document.querySelectorAll('.card-body');
-            cards.forEach(card => {
-                const content = card.textContent.toLowerCase();
-                if (content.includes(searchTerm)) {
-                    card.parentElement.style.display = 'block';
-                    // Highlight matches
-                    const regex = new RegExp(searchTerm, 'gi');
-                    card.innerHTML = card.innerHTML.replace(regex, match =>
-                        `<span class="highlight">${match}</span>`
-                    );
-                } else {
-                    card.parentElement.style.display = 'none';
-                }
-            });
-        });
-
-        // Animation on scroll
-        const animateElements = document.querySelectorAll('.animate');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        animateElements.forEach(el => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(el);
-        });
-
-        // Audio functionality
-        function playAudio(text) {
-            // In a real implementation, you would use a text-to-speech API or pre-recorded audio files
-            // This is a placeholder for the actual implementation
-            console.log("Playing audio for: " + text);
-
-            // For demonstration, we'll use the Web Speech API
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'pt-BR'; // Set language to Brazilian Portuguese
-                speechSynthesis.speak(utterance);
-            } else {
-                alert("Text-to-speech not supported in your browser");
-            }
-        }
-
-        // Initialize any remaining functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            // Add any additional initialization code here
-
-            // Example: Make all external links open in new tab
-            document.querySelectorAll('a[href^="http"]').forEach(link => {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
-        });
-
-        // Menu mobile
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Fechar menu quando um link for clicado
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
         // Suavizar rolagem para links âncora
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -3879,7 +3070,6 @@
                 }
             });
         });
-
     </script>
 </body>
 
