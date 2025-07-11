@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Portuguese With Kaique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
             --primary: #2e7d32;
@@ -366,7 +367,7 @@
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
-            bottom: 80px;
+            bottom: 140px;
             right: 20px;
             width: 50px;
             height: 50px;
@@ -428,10 +429,315 @@
                 max-height: none !important;
             }
         }
+
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #60ad5e;
+            --primary-dark: #005005;
+            --secondary: #ff8f00;
+            --background: #f5f5f5;
+            --surface: #ffffff;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --error: #c62828;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background);
+            padding: 0;
+            margin: 0;
+        }
+
+        /* ========== MENU DE NAVEGAÇÃO ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--surface);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            /* Para compensar o navbar fixo */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: #e67e00;
+        }
+
+        /* ========== BOTÃO DO WHATSAPP ========== */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Restante do seu CSS existente... */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            margin-bottom: 40px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        /* ... (mantenha todo o resto do seu CSS existente) ... */
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--surface);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Menu de Navegação -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-language"></i>
+                <span>Learning Portuguese</span>
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#verbs">Verbos</a></li>
+                <li><a href="#words">Palavras</a></li>
+                <li><a href="#phrases">Frases</a></li>
+                <li><a href="#podcasts">Podcasts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Seção Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Learning Portuguese with me.</h1>
+            <p>Hello! I'm Kaique, and I'm here to help you learn Portuguese. Here you'll find a great foundation to
+                start your studies!</p>
+            <div class="hero-buttons">
+                <a href="#phrases" class="btn">Start Now</a>
+                <a href="#podcasts" class="btn btn-secondary">Podcasts</a>
+            </div>
+        </div>
+    </section>
+
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
@@ -445,21 +751,14 @@
     </button>
 
     <div class="container">
-        <header class="header">
-            <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb"
-                alt="Brazilian flag background" class="header-cover">
-            <div class="header-content">
-                <div class="header-icon">🇧🇷</div>
-                <h1 class="header-title">Learning Portuguese With Kaique</h1>
-            </div>
-        </header>
+
 
         <div class="search-container">
             <input type="text" class="search-input" id="searchInput"
                 placeholder="Search for verbs, words or phrases...">
         </div>
 
-        <div class="card animate" style="animation-delay: 0.1s">
+        <div class="card animate" style="animation-delay: 0.1s" id="verbs">
             <div class="card-header" id="verbsHeader">
                 <h2><i class="fas fa-language mr-10"></i> 100 verbos mais frequentes | 100 most frequent verbs</h2>
                 <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
@@ -1271,7 +1570,7 @@
             </div>
         </div>
 
-        <div class="card animate" style="animation-delay: 0.2s">
+        <div class="card animate" style="animation-delay: 0.2s" id="words">
             <div class="card-header" id="wordsHeader">
                 <h2><i class="fas fa-list-ul mr-10"></i> 100 palavras mais frequentemente usadas</h2>
                 <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
@@ -2080,12 +2379,12 @@
                     </li>
             </div>
             </ol>
-        </button>
+            </button>
         </div>
         <!-- Continue with all 100 words -->
 
 
-        <div class="card animate" style="animation-delay: 0.3s">
+        <div class="card animate" style="animation-delay: 0.3s" id="phrases">
             <div class="card-header" id="phrasesHeader">
                 <h2><i class="fas fa-comments mr-10"></i> Frases úteis</h2>
                 <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
@@ -2095,15 +2394,16 @@
                 <ul class="bulleted-list">
                     <li>
                         <div class="phrase-container"></div>
-                            <span><strong>Oi, como você tá?</strong> - Hi, how are you? / Hey, how are you doing?</span>
-                            <button class="audio-btn" onclick="playAudio('Oi, como você tá?')">
-                                <i class="fas fa-volume-up"></i>
-                            </button>
+                        <span><strong>Oi, como você tá?</strong> - Hi, how are you? / Hey, how are you doing?</span>
+                        <button class="audio-btn" onclick="playAudio('Oi, como você tá?')">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
                     </li>
-                    
+
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Opa, como vai?</strong> - Hey, how's it going? / What's up? (mais informal)</span>
+                            <span><strong>Opa, como vai?</strong> - Hey, how's it going? / What's up? (mais
+                                informal)</span>
                             <button class="audio-btn" onclick="playAudio('Opa, como vai?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2111,7 +2411,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>E aí, como cê tá?</strong> - What's up? / How are you doing? (bem informal)</span>
+                            <span><strong>E aí, como cê tá?</strong> - What's up? / How are you doing? (bem
+                                informal)</span>
                             <button class="audio-btn" onclick="playAudio('E aí, como cê tá?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2176,16 +2477,16 @@
                     <li>
                         <div class="phrase-container">
                             <span><strong>Bom dia.</strong> - Good morning.</span>
-                            <button class="audio-btn" onclick="playAudio('Bom dia')"></button>
-                                <i class="fas fa-volume-up"></i>
+                            <button class="audio-btn" onclick="playAudio('Bom dia')">
+                            <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
                     </li>
                     <li>
                         <div class="phrase-container">
                             <span><strong>'Dia.</strong> - Morning. (informal)</span>
-                            <button class="audio-btn" onclick="playAudio('Dia')"></button>
-                                <i class="fas fa-volume-up"></i>
+                            <button class="audio-btn" onclick="playAudio('Dia')">
+                            <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
                     </li>
@@ -2199,7 +2500,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Boa noite.</strong> - Good evening (ao chegar) / Good night (ao sair/ir dormir).</span>
+                            <span><strong>Boa noite.</strong> - Good evening (ao chegar) / Good night (ao sair/ir
+                                dormir).</span>
                             <button class="audio-btn" onclick="playAudio('Boa noite')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2283,7 +2585,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Você trabalha com o que?</strong> - What do you do for a living? / What's your job?</span>
+                            <span><strong>Você trabalha com o que?</strong> - What do you do for a living? / What's your
+                                job?</span>
                             <button class="audio-btn" onclick="playAudio('Você trabalha com o que?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2299,11 +2602,11 @@
                     </li>
                     <li>
                         <div class="phrase-container"></div>
-                            <span><strong>Como vai o trabalho?</strong> - How's work?</span>
-                            <button class="audio-btn" onclick="playAudio('Como vai o trabalho?')">
-                                <i class="fas fa-volume-up"></i>
-                            </button>
-                        
+                        <span><strong>Como vai o trabalho?</strong> - How's work?</span>
+                        <button class="audio-btn" onclick="playAudio('Como vai o trabalho?')">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+
                     </li>
                     <li>
                         <div class="phrase-container">
@@ -2312,7 +2615,7 @@
                                 <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
-                    </ul>
+                </ul>
 
 
                 <h3>Educação e Cortesia:</h3>
@@ -2375,7 +2678,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Muitíssimo obrigado(a)! / Valeu demais!</strong> - Thank you so much! / Thanks a ton! (informal)</span>
+                            <span><strong>Muitíssimo obrigado(a)! / Valeu demais!</strong> - Thank you so much! / Thanks
+                                a ton! (informal)</span>
                             <button class="audio-btn" onclick="playAudio('Valeu demais!')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2391,7 +2695,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Sem problema! / Não se preocupa!</strong> - No problem! / Don't worry about it!</span>
+                            <span><strong>Sem problema! / Não se preocupa!</strong> - No problem! / Don't worry about
+                                it!</span>
                             <button class="audio-btn" onclick="playAudio('Sem problema!')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2407,7 +2712,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Você poderia repetir, por favor?</strong> - Could you repeat that, please?</span>
+                            <span><strong>Você poderia repetir, por favor?</strong> - Could you repeat that,
+                                please?</span>
                             <button class="audio-btn" onclick="playAudio('Você poderia repetir, por favor?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2415,7 +2721,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Você pode falar mais devagar, por favor?</strong> - Could you speak more slowly, please?</span>
+                            <span><strong>Você pode falar mais devagar, por favor?</strong> - Could you speak more
+                                slowly, please?</span>
                             <button class="audio-btn" onclick="playAudio('Você pode falar mais devagar, por favor?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2427,7 +2734,8 @@
                 <ul class="bulleted-list">
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Eu tô aprendendo (idioma) agora.</strong> - I'm learning (language) now. / I'm currently learning (language).</span>
+                            <span><strong>Eu tô aprendendo (idioma) agora.</strong> - I'm learning (language) now. / I'm
+                                currently learning (language).</span>
                             <button class="audio-btn" onclick="playAudio('Eu tô aprendendo inglês agora.')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2435,8 +2743,10 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Eu comecei a aprendê-lo [tempo] atrás.</strong> - I started learning it [time] ago.</span>
-                            <button class="audio-btn" onclick="playAudio('Eu comecei a aprendê-lo quatro meses atrás.')">
+                            <span><strong>Eu comecei a aprendê-lo [tempo] atrás.</strong> - I started learning it [time]
+                                ago.</span>
+                            <button class="audio-btn"
+                                onclick="playAudio('Eu comecei a aprendê-lo quatro meses atrás.')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
@@ -2475,7 +2785,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Qual o significado de [palavra]?</strong> - What's the meaning of [word]? / What does [word] mean?</span>
+                            <span><strong>Qual o significado de [palavra]?</strong> - What's the meaning of [word]? /
+                                What does [word] mean?</span>
                             <button class="audio-btn" onclick="playAudio('Qual o significado de “saudade”?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2499,7 +2810,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Tá certo se eu disser [frase]?</strong> - Is it correct if I say [phrase]? / Is it correct to say [phrase]?</span>
+                            <span><strong>Tá certo se eu disser [frase]?</strong> - Is it correct if I say [phrase]? /
+                                Is it correct to say [phrase]?</span>
                             <button class="audio-btn" onclick="playAudio('Tá certo se eu disser “Eu fui no mercado”?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2507,8 +2819,10 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>O que você acha do meu (idioma)? Seja sincero(a).</strong> - What do you think of my (language)? Be honest.</span>
-                            <button class="audio-btn" onclick="playAudio('O que você acha do meu português? Seja sincero.')">
+                            <span><strong>O que você acha do meu (idioma)? Seja sincero(a).</strong> - What do you think
+                                of my (language)? Be honest.</span>
+                            <button class="audio-btn"
+                                onclick="playAudio('O que você acha do meu português? Seja sincero.')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
@@ -2535,7 +2849,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Eu não gosto de [algo/verbo]</strong> - I don't like [something/verb-ing].</span>
+                            <span><strong>Eu não gosto de [algo/verbo]</strong> - I don't like
+                                [something/verb-ing].</span>
                             <button class="audio-btn" onclick="playAudio('Eu não gosto de acordar cedo.')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2543,7 +2858,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Você gosta de [série/filme/música/artista]?</strong> - Do you like [series/movie/music/artist]?</span>
+                            <span><strong>Você gosta de [série/filme/música/artista]?</strong> - Do you like
+                                [series/movie/music/artist]?</span>
                             <button class="audio-btn" onclick="playAudio('Você gosta de música clássica?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2559,7 +2875,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Você tem um(a) [artista/livro/país/cidade/etc] favorito(a)?</strong> - Do you have a favorite [artist/book/country/city/etc]?</span>
+                            <span><strong>Você tem um(a) [artista/livro/país/cidade/etc] favorito(a)?</strong> - Do you
+                                have a favorite [artist/book/country/city/etc]?</span>
                             <button class="audio-btn" onclick="playAudio('Você tem um artista favorito?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2575,7 +2892,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Qual é o seu tipo de comida favorito?</strong> - What's your favorite type of food?</span>
+                            <span><strong>Qual é o seu tipo de comida favorito?</strong> - What's your favorite type of
+                                food?</span>
                             <button class="audio-btn" onclick="playAudio('Qual é o seu tipo de comida favorito?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2583,7 +2901,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Você pode me recomendar um filme bom?</strong> - Can you recommend a good movie?</span>
+                            <span><strong>Você pode me recomendar um filme bom?</strong> - Can you recommend a good
+                                movie?</span>
                             <button class="audio-btn" onclick="playAudio('Você pode me recomendar um filme bom?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2607,7 +2926,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Eu sou torcedor do/da ou Eu torço pro/pra [time de esportes].</strong> - I'm a fan of [sports team]. / I support [sports team].</span>
+                            <span><strong>Eu sou torcedor do/da ou Eu torço pro/pra [time de esportes].</strong> - I'm a
+                                fan of [sports team]. / I support [sports team].</span>
                             <button class="audio-btn" onclick="playAudio('Eu sou torcedor do Flamengo.')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2619,7 +2939,8 @@
                 <ul class="bulleted-list">
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Você tem Instagram / Facebook / WhatsApp etc.?</strong> - Do you have Instagram / Facebook / WhatsApp, etc.?</span>
+                            <span><strong>Você tem Instagram / Facebook / WhatsApp etc.?</strong> - Do you have
+                                Instagram / Facebook / WhatsApp, etc.?</span>
                             <button class="audio-btn" onclick="playAudio('Você tem Instagram?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2643,8 +2964,10 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Há quanto tempo você está aprendendo [idioma]?</strong> - How long have you been learning [language]?</span>
-                            <button class="audio-btn" onclick="playAudio('Há quanto tempo você está aprendendo inglês?')">
+                            <span><strong>Há quanto tempo você está aprendendo [idioma]?</strong> - How long have you
+                                been learning [language]?</span>
+                            <button class="audio-btn"
+                                onclick="playAudio('Há quanto tempo você está aprendendo inglês?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
                         </div>
@@ -2711,7 +3034,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Onde fica a estação de trem mais próxima?</strong> - Where's the nearest train station?</span>
+                            <span><strong>Onde fica a estação de trem mais próxima?</strong> - Where's the nearest train
+                                station?</span>
                             <button class="audio-btn" onclick="playAudio('Onde fica a estação de trem mais próxima?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2719,7 +3043,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Onde fica a estação de metrô?</strong> - Where's the subway station? / Where's the metro station?</span>
+                            <span><strong>Onde fica a estação de metrô?</strong> - Where's the subway station? / Where's
+                                the metro station?</span>
                             <button class="audio-btn" onclick="playAudio('Onde fica a estação de metrô?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2747,7 +3072,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Qual é a melhor maneira de chegar lá?</strong> - What's the best way to get there?</span>
+                            <span><strong>Qual é a melhor maneira de chegar lá?</strong> - What's the best way to get
+                                there?</span>
                             <button class="audio-btn" onclick="playAudio('Qual é a melhor maneira de chegar lá?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2755,7 +3081,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Onde fica o [transporte] mais próximo?</strong> - Where's the nearest [transportation]?</span>
+                            <span><strong>Onde fica o [transporte] mais próximo?</strong> - Where's the nearest
+                                [transportation]?</span>
                             <button class="audio-btn" onclick="playAudio('Onde fica o metrô mais próximo?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2787,7 +3114,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Onde fica o ponto de ônibus mais próximo?</strong> - Where's the nearest bus stop?</span>
+                            <span><strong>Onde fica o ponto de ônibus mais próximo?</strong> - Where's the nearest bus
+                                stop?</span>
                             <button class="audio-btn" onclick="playAudio('Onde fica o ponto de ônibus mais próximo?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2799,7 +3127,8 @@
                 <ul class="bulleted-list">
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Quanto custa a entrada?</strong> - How much is the entrance fee? / How much is admission?</span>
+                            <span><strong>Quanto custa a entrada?</strong> - How much is the entrance fee? / How much is
+                                admission?</span>
                             <button class="audio-btn" onclick="playAudio('Quanto custa a entrada?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2807,7 +3136,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Quanto isso custa?</strong> - How much does this cost? / How much is this?</span>
+                            <span><strong>Quanto isso custa?</strong> - How much does this cost? / How much is
+                                this?</span>
                             <button class="audio-btn" onclick="playAudio('Quanto isso custa?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2815,7 +3145,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Posso experimentar aquilo? / Posso experimentar isso?</strong> - Can I try that on? / Can I try this on?</span>
+                            <span><strong>Posso experimentar aquilo? / Posso experimentar isso?</strong> - Can I try
+                                that on? / Can I try this on?</span>
                             <button class="audio-btn" onclick="playAudio('Posso experimentar isso?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2899,7 +3230,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Você pode recomendar um bom restaurante?</strong> - Can you recommend a good restaurant?</span>
+                            <span><strong>Você pode recomendar um bom restaurante?</strong> - Can you recommend a good
+                                restaurant?</span>
                             <button class="audio-btn" onclick="playAudio('Você pode recomendar um bom restaurante?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2907,7 +3239,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Posso receber a conta, por favor?</strong> - Can I have the check, please? / Can I have the bill, please?</span>
+                            <span><strong>Posso receber a conta, por favor?</strong> - Can I have the check, please? /
+                                Can I have the bill, please?</span>
                             <button class="audio-btn" onclick="playAudio('Posso receber a conta, por favor?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2935,7 +3268,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Eu preciso de um tempo / um descanso / uma pausa.</strong> - I need some time / a rest / a break.</span>
+                            <span><strong>Eu preciso de um tempo / um descanso / uma pausa.</strong> - I need some time
+                                / a rest / a break.</span>
                             <button class="audio-btn" onclick="playAudio('Eu preciso de um descanso.')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2943,7 +3277,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Onde fica a farmácia mais próxima?</strong> - Where's the nearest pharmacy? / Where's the nearest drugstore?</span>
+                            <span><strong>Onde fica a farmácia mais próxima?</strong> - Where's the nearest pharmacy? /
+                                Where's the nearest drugstore?</span>
                             <button class="audio-btn" onclick="playAudio('Onde fica a farmácia mais próxima?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -2951,7 +3286,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Eu tô melhor agora, obrigado(a).</strong> - I'm feeling better now, thank you.</span>
+                            <span><strong>Eu tô melhor agora, obrigado(a).</strong> - I'm feeling better now, thank
+                                you.</span>
                             <button class="audio-btn" onclick="playAudio('Eu tô melhor agora, obrigado.')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -3035,7 +3371,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Qual é a diferença entre [palavra] e [palavra similar]?</strong> - What's the difference between [word] and [similar word]?</span>
+                            <span><strong>Qual é a diferença entre [palavra] e [palavra similar]?</strong> - What's the
+                                difference between [word] and [similar word]?</span>
                             <button class="audio-btn" onclick="playAudio('Qual é a diferença entre “ser” e “estar”?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -3067,7 +3404,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Você pode me recomendar um filme bom?</strong> - Can you recommend a good movie?</span>
+                            <span><strong>Você pode me recomendar um filme bom?</strong> - Can you recommend a good
+                                movie?</span>
                             <button class="audio-btn" onclick="playAudio('Você pode me recomendar um filme bom?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -3091,7 +3429,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Qual é o seu lugar favorito em/na/no [cidade/estado/país]?</strong> - What's your favorite place in [city/state/country]?</span>
+                            <span><strong>Qual é o seu lugar favorito em/na/no [cidade/estado/país]?</strong> - What's
+                                your favorite place in [city/state/country]?</span>
                             <button class="audio-btn" onclick="playAudio('Qual é o seu lugar favorito no Brasil?')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -3143,7 +3482,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Tenha um bom fim de semana. / Aproveita o fim de semana.</strong> - Have a good weekend. / Enjoy your weekend.</span>
+                            <span><strong>Tenha um bom fim de semana. / Aproveita o fim de semana.</strong> - Have a
+                                good weekend. / Enjoy your weekend.</span>
                             <button class="audio-btn" onclick="playAudio('Tenha um bom fim de semana.')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -3151,7 +3491,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Aproveita lá no(a) [evento]!</strong> - Have fun at the [event]! / Enjoy the [event]!</span>
+                            <span><strong>Aproveita lá no(a) [evento]!</strong> - Have fun at the [event]! / Enjoy the
+                                [event]!</span>
                             <button class="audio-btn" onclick="playAudio('Aproveita lá no show!')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -3167,7 +3508,8 @@
                     </li>
                     <li>
                         <div class="phrase-container">
-                            <span><strong>Me manda mensagem quando chegar/estiver em casa.</strong> - Text me when you get home. / Let me know when you're home.</span>
+                            <span><strong>Me manda mensagem quando chegar/estiver em casa.</strong> - Text me when you
+                                get home. / Let me know when you're home.</span>
                             <button class="audio-btn" onclick="playAudio('Me manda mensagem quando chegar em casa.')">
                                 <i class="fas fa-volume-up"></i>
                             </button>
@@ -3177,27 +3519,41 @@
             </div>
         </div>
 
-   
 
-    <div class="card animate" style="animation-delay: 0.4s">
+
+        <div class="card animate" style="animation-delay: 0.4s">
             <div class="card-header" id="whyHeader">
                 <h2><i class="fas fa-question-circle mr-10"></i> Pra que essas listas em português também?</h2>
                 <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
             </div>
             <div class="card-body" id="whyBody">
-                <p>O objetivo de fazer essas listas em português é te dar uma ideia de quais verbos, palavras e frases você deveria priorizar aprender pra começar num outro idioma que não seja nenhum dos 5 acima com maior eficiência.</p>
-                <p>Exemplos do que você pode fazer: <span class="highlight">copiar essas listas uma por vez, colocar no ChatGPT ou outra inteligência artificial de sua preferência e pedir para que traduza a lista para o idioma que você quer. Caso o idioma tenha um alfabeto diferente, como o japonês, russo ou mandarim, peça a inteligência artificial para incluir a escrita no alfabeto do idioma e no alfabeto romano também.</span></p>
+                <p>O objetivo de fazer essas listas em português é te dar uma ideia de quais verbos, palavras e frases
+                    você deveria priorizar aprender pra começar num outro idioma que não seja nenhum dos 5 acima com
+                    maior eficiência.</p>
+                <p>Exemplos do que você pode fazer: <span class="highlight">copiar essas listas uma por vez, colocar no
+                        ChatGPT ou outra inteligência artificial de sua preferência e pedir para que traduza a lista
+                        para o idioma que você quer. Caso o idioma tenha um alfabeto diferente, como o japonês, russo ou
+                        mandarim, peça a inteligência artificial para incluir a escrita no alfabeto do idioma e no
+                        alfabeto romano também.</span></p>
                 <p><strong>Prompts para você copiar e colar:</strong></p>
-                <p><strong>1. Adicione as traduções de todas essas palavras em (idioma) com a escrita no alfabeto dele e no alfabeto romano também.</strong></p>
-                <p><strong>2. Adicione as traduções de todas essas frases em (idioma) com a escrita no alfabeto dele e no alfabeto romano também.</strong></p>
-                <p>Para praticar a pronúncia delas, faça o seguinte: depois de receber as traduções, copie a tradução <span class="highlight">no alfabeto próprio do idioma</span>, vá no site ElevenLabs ou no site/app NaturalReader, escolha o idioma que você está aprendendo na seleção de vozes e cole a tradução no espaço de texto. Dê o play quantas vezes for necessário até você entender como se deve pronunciar, e aí tente imitar o mais igual possível. Obviamente sua pronúncia não será perfeita no início, mas se isso se tornar uma prática diária na sua rotina, você SEM DÚVIDA conseguirá progredir MUITO rápido. Basta cultivar o hábito!</p>
+                <p><strong>1. Adicione as traduções de todas essas palavras em (idioma) com a escrita no alfabeto dele e
+                        no alfabeto romano também.</strong></p>
+                <p><strong>2. Adicione as traduções de todas essas frases em (idioma) com a escrita no alfabeto dele e
+                        no alfabeto romano também.</strong></p>
+                <p>Para praticar a pronúncia delas, faça o seguinte: depois de receber as traduções, copie a tradução
+                    <span class="highlight">no alfabeto próprio do idioma</span>, vá no site ElevenLabs ou no site/app
+                    NaturalReader, escolha o idioma que você está aprendendo na seleção de vozes e cole a tradução no
+                    espaço de texto. Dê o play quantas vezes for necessário até você entender como se deve pronunciar, e
+                    aí tente imitar o mais igual possível. Obviamente sua pronúncia não será perfeita no início, mas se
+                    isso se tornar uma prática diária na sua rotina, você SEM DÚVIDA conseguirá progredir MUITO rápido.
+                    Basta cultivar o hábito!</p>
             </div>
         </div>
 
-    <!-- Continue with all other sections (why, podcasts, etc.) -->
-         <div class="section">
+        <!-- Continue with all other sections (why, podcasts, etc.) -->
+        <div class="section" id="podcasts">
             <h2 class="section-title"><i class="fas fa-podcast mr-10"></i> Podcasts 🇧🇷🇵🇹</h2>
-            
+
             <div class="card animate" style="animation-delay: 0.5s">
                 <div class="card-header" id="beginnerHeader">
                     <h2><i class="fas fa-baby mr-10"></i> Iniciante absoluto (absolute beginner)</h2>
@@ -3208,26 +3564,37 @@
                         <div class="bookmark-info">
                             <div class="bookmark-text">
                                 <div class="bookmark-title">Learn Brazilian Portuguese - LinguaBoost</div>
-                                <div class="bookmark-description">Listen to Learn Brazilian Portuguese - LinguaBoost on Spotify. You can download the entire audio course on our website: www.linguaboost.comBoost your fluency in Brazilian Portuguese with LinguaBoost!Each lesson contains useful everyday phrases related to a specific topic.</div>
+                                <div class="bookmark-description">Listen to Learn Brazilian Portuguese - LinguaBoost on
+                                    Spotify. You can download the entire audio course on our website:
+                                    www.linguaboost.comBoost your fluency in Brazilian Portuguese with LinguaBoost!Each
+                                    lesson contains useful everyday phrases related to a specific topic.</div>
                             </div>
-                            <div class="bookmark-href"><i class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/0ApvDzfxLXpDLnSFxyDzE5</div>
+                            <div class="bookmark-href"><i
+                                    class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/0ApvDzfxLXpDLnSFxyDzE5
+                            </div>
                         </div>
-                        <img src="https://i.scdn.co/image/ab6765630000ba8aa1428d816b54383eedf9be4c" class="bookmark-image">
+                        <img src="https://i.scdn.co/image/ab6765630000ba8aa1428d816b54383eedf9be4c"
+                            class="bookmark-image">
                     </a>
-                    
+
                     <a href="https://open.spotify.com/show/3HsmfbYBBwLDuZgyvvCRa1?si=603b5981e6c34e2a" class="bookmark">
                         <div class="bookmark-info">
                             <div class="bookmark-text">
                                 <div class="bookmark-title">Learn Brazilian Portuguese</div>
-                                <div class="bookmark-description">Welcome to "Learn Brazilian Portuguese", a podcast that brings you practical lessons in Brazilian Portuguese, focusing on the informal language used in day-to-day life.</div>
+                                <div class="bookmark-description">Welcome to "Learn Brazilian Portuguese", a podcast
+                                    that brings you practical lessons in Brazilian Portuguese, focusing on the informal
+                                    language used in day-to-day life.</div>
                             </div>
-                            <div class="bookmark-href"><i class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/3HsmfbYBBwLDuZgyvvCRa1</div>
+                            <div class="bookmark-href"><i
+                                    class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/3HsmfbYBBwLDuZgyvvCRa1
+                            </div>
                         </div>
-                        <img src="https://i.scdn.co/image/ab6765630000ba8a8a37004d776d567958c68603" class="bookmark-image">
+                        <img src="https://i.scdn.co/image/ab6765630000ba8a8a37004d776d567958c68603"
+                            class="bookmark-image">
                     </a>
                 </div>
             </div>
-            
+
             <div class="card animate" style="animation-delay: 0.6s">
                 <div class="card-header" id="basicHeader">
                     <h2><i class="fas fa-book-reader mr-10"></i> Básico (basic)</h2>
@@ -3238,15 +3605,20 @@
                         <div class="bookmark-info">
                             <div class="bookmark-text">
                                 <div class="bookmark-title">Speaking Brazilian Podcast</div>
-                                <div class="bookmark-description">Speaking Brazilian Language School specializes in Brazilian Portuguese. New lessons every Wednesday with tips on grammar, vocabulary, and pronunciation of Brazilian Portuguese.</div>
+                                <div class="bookmark-description">Speaking Brazilian Language School specializes in
+                                    Brazilian Portuguese. New lessons every Wednesday with tips on grammar, vocabulary,
+                                    and pronunciation of Brazilian Portuguese.</div>
                             </div>
-                            <div class="bookmark-href"><i class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/7bqpF6oR6mifWxM8PMHU2Y</div>
+                            <div class="bookmark-href"><i
+                                    class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/7bqpF6oR6mifWxM8PMHU2Y
+                            </div>
                         </div>
-                        <img src="https://i.scdn.co/image/47b6c514217fa828666fc47706c92c20dfece286" class="bookmark-image">
+                        <img src="https://i.scdn.co/image/47b6c514217fa828666fc47706c92c20dfece286"
+                            class="bookmark-image">
                     </a>
                 </div>
             </div>
-            
+
             <div class="card animate" style="animation-delay: 0.7s">
                 <div class="card-header" id="intermediateHeader">
                     <h2><i class="fas fa-user-graduate mr-10"></i> Intermediário (intermediate)</h2>
@@ -3257,15 +3629,19 @@
                         <div class="bookmark-info">
                             <div class="bookmark-text">
                                 <div class="bookmark-title">Português com Letícia</div>
-                                <div class="bookmark-description">Podcast com aulas e testes de Português para você dominar a Língua Portuguesa!</div>
+                                <div class="bookmark-description">Podcast com aulas e testes de Português para você
+                                    dominar a Língua Portuguesa!</div>
                             </div>
-                            <div class="bookmark-href"><i class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/5JifZ6oABMvmshGw9pGBNV</div>
+                            <div class="bookmark-href"><i
+                                    class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/5JifZ6oABMvmshGw9pGBNV
+                            </div>
                         </div>
-                        <img src="https://i.scdn.co/image/ab6765630000ba8a6328350549e69bc75a83bc33" class="bookmark-image">
+                        <img src="https://i.scdn.co/image/ab6765630000ba8a6328350549e69bc75a83bc33"
+                            class="bookmark-image">
                     </a>
                 </div>
             </div>
-            
+
             <div class="card animate" style="animation-delay: 0.8s">
                 <div class="card-header" id="advancedHeader">
                     <h2><i class="fas fa-chalkboard-teacher mr-10"></i> Avançado (advanced)</h2>
@@ -3276,15 +3652,19 @@
                         <div class="bookmark-info">
                             <div class="bookmark-text">
                                 <div class="bookmark-title">PodPeople</div>
-                                <div class="bookmark-description">Bem-vindos ao nosso Podcast! Aqui, exploramos conversas estimulantes sobre vida, arte, ciência, sociedade e mais.</div>
+                                <div class="bookmark-description">Bem-vindos ao nosso Podcast! Aqui, exploramos
+                                    conversas estimulantes sobre vida, arte, ciência, sociedade e mais.</div>
                             </div>
-                            <div class="bookmark-href"><i class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/7DNyvheqLYge3zrIsZduPA</div>
+                            <div class="bookmark-href"><i
+                                    class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/7DNyvheqLYge3zrIsZduPA
+                            </div>
                         </div>
-                        <img src="https://i.scdn.co/image/ab6765630000ba8a9c9294f56d8967a41cd24288" class="bookmark-image">
+                        <img src="https://i.scdn.co/image/ab6765630000ba8a9c9294f56d8967a41cd24288"
+                            class="bookmark-image">
                     </a>
                 </div>
             </div>
-            
+
             <div class="card animate" style="animation-delay: 0.9s">
                 <div class="card-header" id="portugalHeader">
                     <h2><i class="fas fa-flag mr-10"></i> Podcasts Portugueses (Portuguese podcasts) 🇵🇹</h2>
@@ -3295,25 +3675,40 @@
                         <div class="bookmark-info">
                             <div class="bookmark-text">
                                 <div class="bookmark-title">Intermediate Portuguese Podcast</div>
-                                <div class="bookmark-description">Practice European Portuguese through interesting and authentic content! Learn about Portuguese Culture and History, Language Learning, Self-Improvement and more.</div>
+                                <div class="bookmark-description">Practice European Portuguese through interesting and
+                                    authentic content! Learn about Portuguese Culture and History, Language Learning,
+                                    Self-Improvement and more.</div>
                             </div>
-                            <div class="bookmark-href"><i class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/0tex61CKrQ0InxdgdRmqf7</div>
+                            <div class="bookmark-href"><i
+                                    class="fab fa-spotify bookmark-icon"></i>https://open.spotify.com/show/0tex61CKrQ0InxdgdRmqf7
+                            </div>
                         </div>
-                        <img src="https://i.scdn.co/image/ab6765630000ba8a8ec64dd124260b601b2c078b" class="bookmark-image">
+                        <img src="https://i.scdn.co/image/ab6765630000ba8a8ec64dd124260b601b2c078b"
+                            class="bookmark-image">
                     </a>
                 </div>
             </div>
-            
+
             <div class="card animate" style="animation-delay: 1s">
                 <div class="card-header" id="tipsHeader">
                     <h2><i class="fas fa-lightbulb mr-10"></i> 🇧🇷 Como usar podcasts para aprender:</h2>
                     <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
                 <div class="card-body" id="tipsBody">
-                    <p>Ouça podcasts sempre que puder ouvir algo que não atrapalhe o que está fazendo no momento (ex.: andando na rua, em transporte público, lavando a louça, tomando banho, fazendo as compras etc). Enquanto ouve, foque em fazer 5 coisas:</p>
+                    <p>Ouça podcasts sempre que puder ouvir algo que não atrapalhe o que está fazendo no momento (ex.:
+                        andando na rua, em transporte público, lavando a louça, tomando banho, fazendo as compras etc).
+                        Enquanto ouve, foque em fazer 5 coisas:</p>
                     <ol class="numbered-list">
-                        <li>Com os podcasts mais básicos, repita as palavras e frases que disserem no idioma. Alguns desses podcasts para iniciantes absolutos incluem pausas que indicam quando você deve repetir, então não deixe-as passar em branco. Repita sempre que as pausas ocorrerem e <strong>sempre procure falar exatamente como ouviu</strong>.</li>
-                        <li>Toda vez que ouvir essas palavras e frases nos podcasts mais fáceis, <strong>se pergunte como são escritas</strong>. "Chute" mentalmente como é a escrita delas, e depois pesquise no Google Tradutor. Basta ir ao Google Tradutor, colocar do idioma para português e escrever como você acha que se escrevem. Possivelmente o Google Tradutor corrigirá sua escrita e você aprenderá a versão certa, mas há a possibilidade disso não acontecer. Nesse caso, clique no ícone do microfone para falar em português e veja se ele reconhece.</li>
+                        <li>Com os podcasts mais básicos, repita as palavras e frases que disserem no idioma. Alguns
+                            desses podcasts para iniciantes absolutos incluem pausas que indicam quando você deve
+                            repetir, então não deixe-as passar em branco. Repita sempre que as pausas ocorrerem e
+                            <strong>sempre procure falar exatamente como ouviu</strong>.</li>
+                        <li>Toda vez que ouvir essas palavras e frases nos podcasts mais fáceis, <strong>se pergunte
+                                como são escritas</strong>. "Chute" mentalmente como é a escrita delas, e depois
+                            pesquise no Google Tradutor. Basta ir ao Google Tradutor, colocar do idioma para português e
+                            escrever como você acha que se escrevem. Possivelmente o Google Tradutor corrigirá sua
+                            escrita e você aprenderá a versão certa, mas há a possibilidade disso não acontecer. Nesse
+                            caso, clique no ícone do microfone para falar em português e veja se ele reconhece.</li>
                         <!-- More tips would be listed here -->
                     </ol>
                 </div>
@@ -3321,7 +3716,23 @@
         </div>
     </div>
 
+    <!-- Botão do WhatsApp -->
+    <a href="https://wa.me/SEUNUMERODETELEFONE" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Restante do seu conteúdo HTML existente... -->
+    <div class="container">
+        <!-- Seu conteúdo existente aqui -->
+        <div class="header">
+            <!-- ... -->
+        </div>
+
+        <!-- ... (todo o resto do seu conteúdo) ... -->
+    </div>
+
     <script>
+
         // Toggle card content
         document.querySelectorAll('.card-header').forEach(header => {
             header.addEventListener('click', () => {
@@ -3435,6 +3846,41 @@
                 link.setAttribute('rel', 'noopener noreferrer');
             });
         });
+
+        // Menu mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Fechar menu quando um link for clicado
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Suavizar rolagem para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Ajuste para o navbar fixo
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
     </script>
 </body>
+
 </html>
