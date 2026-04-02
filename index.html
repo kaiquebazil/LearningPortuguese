@@ -1,0 +1,5313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Portuguese with Kaique</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="icon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/stsyle.css" />
+    <style>
+      :root {
+        --primary: #4361ee;
+        --primary-light: #4895ef;
+        --primary-dark: #3a0ca3;
+        --secondary: #f72585;
+        --accent: #4cc9f0;
+        --background: #f8f9fa;
+        --surface: #ffffff;
+        --text-primary: #212529;
+        --text-secondary: #6c757d;
+        --error: #e63946;
+        --success: #2a9d8f;
+        --border-radius: 12px;
+        --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background-color: var(--background);
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(67, 97, 238, 0.2);
+      }
+
+      .btn-secondary {
+        background-color: white;
+        color: var(--primary);
+        border: 1px solid var(--primary);
+      }
+
+      .btn-secondary:hover {
+        background-color: rgba(67, 97, 238, 0.1);
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--surface);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 15px 0;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .logo img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-primary);
+        font-weight: 500;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        padding-top: 70px;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 40px;
+      }
+
+      .hero-scroll {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        opacity: 0.8;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0) translateX(-50%);
+        }
+
+        40% {
+          transform: translateY(-20px) translateX(-50%);
+        }
+
+        60% {
+          transform: translateY(-10px) translateX(-50%);
+        }
+      }
+
+      /* Learning Sections */
+      .learning-section {
+        padding: 80px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .section-header h2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      /* Verbs Grid */
+      .verbs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .verb-card {
+        background-color: var(--surface);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .verb-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .verb-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .verb-content h3 {
+        margin-bottom: 5px;
+        color: var(--primary);
+      }
+
+      .verb-content p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .numbered-list {
+        counter-reset: item;
+        list-style: none;
+        padding-left: 0;
+        margin-left: 0;
+      }
+
+      .numbered-list li {
+        position: relative;
+        background: var(--surface);
+        border-radius: 8px;
+        padding: 10px 20px;
+        margin-bottom: 12px;
+        padding: 16px 18px 16px 48px;
+        box-shadow: 0 2px 8px rgba(67, 97, 238, 0.06);
+        transition: box-shadow 0.2s;
+        display: flex;
+        align-items: center;
+      }
+
+      .numbered-list li:hover {
+        box-shadow: 0 4px 16px rgba(67, 97, 238, 0.12);
+        background: var(--primary-light);
+        color: #fff;
+      }
+
+      .numbered-list li::before {
+        counter-increment: item;
+        content: counter(item) ".";
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--primary);
+        background: rgba(67, 97, 238, 0.08);
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .phrase-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .phrase-container span {
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .audio-btn {
+        margin-left: auto;
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s, transform 0.2s;
+        box-shadow: 0 2px 6px rgba(76, 201, 240, 0.12);
+      }
+
+      .audio-btn:hover {
+        background: var(--primary);
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 600px) {
+        .numbered-list li {
+          padding-left: 38px;
+          font-size: 0.98rem;
+        }
+
+        .numbered-list li::before {
+          left: 8px;
+          width: 22px;
+          height: 22px;
+          font-size: 1rem;
+        }
+
+        .audio-btn {
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      .audio-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-light);
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .audio-btn:hover {
+        background-color: var(--primary);
+        transform: scale(1.1);
+      }
+
+      .verb-examples {
+        background-color: rgba(67, 97, 238, 0.05);
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      .verb-examples p {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+
+      /* Vocabulary Categories */
+      .vocab-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .category-card {
+        background-color: var(--surface);
+        border-radius: var(--border-radius);
+        padding: 25px 20px;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .category-card i {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+
+      .category-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .category-card p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      /* Phrases Accordion */
+      .phrases-accordion {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .phrase-category {
+        background-color: var(--surface);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+
+      .category-header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .category-header h3 {
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .phrase-list {
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .phrase-category.active .phrase-list {
+        max-height: 2000px;
+        padding: 20px;
+      }
+
+      .phrase-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .phrase-item:last-child {
+        border-bottom: none;
+      }
+
+      .phrase-text p:first-child {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .phrase-text p:last-child {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      /* Resources Tabs */
+      .resources-tabs {
+        margin-top: 30px;
+      }
+
+      .tab-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        gap: 10px;
+      }
+
+      .tab-btn {
+        padding: 10px 20px;
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        font-weight: 600;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .tab-btn.active {
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--surface);
+        padding: 60px 0 20px;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 20px;
+        color: var(--primary);
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-section ul li a {
+        text-decoration: none;
+        color: var(--text-secondary);
+        transition: var(--transition);
+      }
+
+      .footer-section ul li a:hover {
+        color: var(--primary);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(67, 97, 238, 0.1);
+        color: var(--primary);
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      /* Floating Buttons */
+      .theme-toggle {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        border: none;
+        outline: none;
+        transition: var(--transition);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 90px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--secondary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        border: none;
+        outline: none;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+      }
+
+      .back-to-top:hover {
+        transform: scale(1.1);
+      }
+
+      .whatsapp-btn {
+        position: fixed;
+        bottom: 150px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: #25d366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        transition: var(--transition);
+        text-decoration: none;
+      }
+
+      .whatsapp-btn:hover {
+        transform: scale(1.1);
+      }
+
+      /* Dark Mode */
+      body.dark-mode {
+        --background: #121212;
+        --surface: #1e1e1e;
+        --text-primary: #e0e0e0;
+        --text-secondary: #9e9e9e;
+        --primary: #4caf50;
+        --primary-light: #6fbf73;
+        --primary-dark: #357a38;
+        --secondary: #f48fb1;
+        --accent: #80deea;
+      }
+
+      body.dark-mode .hero {
+        background: linear-gradient(
+            135deg,
+            rgba(53, 122, 56, 0.9),
+            rgba(76, 175, 80, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80");
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background-color: var(--surface);
+          flex-direction: column;
+          padding: 20px;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+          transform: translateY(-150%);
+          transition: transform 0.3s ease;
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+        }
+
+        .verbs-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .whatsapp-btn,
+        .back-to-top,
+        .theme-toggle {
+          width: 45px;
+          height: 45px;
+          font-size: 1.2rem;
+          bottom: 20px;
+          right: 20px;
+        }
+
+        .back-to-top {
+          bottom: 75px;
+        }
+
+        .whatsapp-btn {
+          bottom: 130px;
+        }
+      }
+    </style>
+    <link rel="shortcut icon" href="icon.svg" type="image/x-icon" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <span>Learn Portuguese</span>
+        </a>
+
+        <div class="nav-right">
+          <ul class="nav-links" id="navLinks">
+            <li>
+              <a href="#home"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+              <a href="#verbs"><i class="fas fa-language"></i> Verbs</a>
+            </li>
+            <li>
+              <a href="#vocabulary"><i class="fas fa-book"></i> Vocabulary</a>
+            </li>
+            <li>
+              <a href="#phrases"><i class="fas fa-comments"></i> Phrases</a>
+            </li>
+            <li>
+              <a href="#resources"><i class="fas fa-podcast"></i> Resources</a>
+            </li>
+          </ul>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Learn Portuguese with Kaique</h1>
+        <p>
+          Your complete guide to mastering Brazilian Portuguese from beginner to
+          advanced levels
+        </p>
+        <div class="hero-buttons">
+          <a href="#phrases" class="btn btn-primary">Start Learning</a>
+          <a href="#resources" class="btn btn-secondary">Resources</a>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll to explore</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- Progress Indicator -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+      <section class="search-section" style="display: none">
+        <div class="search-container">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search verbs, words or phrases..."
+          />
+          <button class="search-btn">Search</button>
+        </div>
+      </section>
+
+      <!-- Learning Sections -->
+      <section class="learning-section" id="verbs">
+        <div class="section-header">
+          <h2><i class="fas fa-language"></i> Essential Verbs</h2>
+          <p>
+            Master the 100 most common Portuguese verbs with examples and audio
+          </p>
+        </div>
+
+        <div class="verbs-grid">
+          <!-- Verb 1 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ser</h3>
+              <p>To be (essence/identity)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>sou</strong> brasileiro.</p>
+              <p>I <strong>am</strong> Brazilian.</p>
+            </div>
+          </div>
+
+          <!-- Verb 2 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Estar</h3>
+              <p>To be (state/location)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>estou</strong> em casa.</p>
+              <p>I <strong>am</strong> at home.</p>
+            </div>
+          </div>
+
+          <!-- Verb 3 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ter</h3>
+              <p>To have</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>tenho</strong> um carro.</p>
+              <p>I <strong>have</strong> a car.</p>
+            </div>
+          </div>
+
+          <!-- Verb 4 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Fazer</h3>
+              <p>To do/make</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>faço</strong> meu trabalho.</p>
+              <p>I <strong>do</strong> my work.</p>
+            </div>
+          </div>
+
+          <!-- Verb 5 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ir</h3>
+              <p>To go</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>vou</strong> à praia.</p>
+              <p>I <strong>go</strong> to the beach.</p>
+            </div>
+          </div>
+
+          <!-- Verb 6 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ver</h3>
+              <p>To see</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>vejo</strong> televisão.</p>
+              <p>I <strong>watch</strong> TV.</p>
+            </div>
+          </div>
+
+          <!-- Verb 7 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Saber</h3>
+              <p>To know (information)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>sei</strong> a resposta.</p>
+              <p>I <strong>know</strong> the answer.</p>
+            </div>
+          </div>
+
+          <!-- Verb 8 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Poder</h3>
+              <p>To be able to/can</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>posso</strong> ajudar.</p>
+              <p>I <strong>can</strong> help.</p>
+            </div>
+          </div>
+
+          <!-- Verb 9 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Dizer</h3>
+              <p>To say/tell</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>digo</strong> a verdade.</p>
+              <p>I <strong>tell</strong> the truth.</p>
+            </div>
+          </div>
+
+          <!-- Verb 10 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Vir</h3>
+              <p>To come</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>venho</strong> de São Paulo.</p>
+              <p>I <strong>come</strong> from São Paulo.</p>
+            </div>
+          </div>
+
+          <!-- Continue com os outros verbos no mesmo padrão -->
+          <!-- Exemplo para o verbo 11 -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Dar</h3>
+              <p>To give</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>dou</strong> presentes.</p>
+              <p>I <strong>give</strong> gifts.</p>
+            </div>
+          </div>
+
+          <!-- Os verbos abaixo seguem o estilo do site e removi os que já estão acima -->
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Querer</h3>
+              <p>To want</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>quero</strong> aprender português.</p>
+              <p>I <strong>want</strong> to learn Portuguese.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ficar</h3>
+              <p>To stay/become</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>fico</strong> feliz aqui.</p>
+              <p>I <strong>stay</strong> happy here.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Parecer</h3>
+              <p>To seem/appear</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Isso <strong>parece</strong> fácil.</p>
+              <p>This <strong>seems</strong> easy.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Haver</h3>
+              <p>There to be/to exist</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p><strong>Há</strong> muitas pessoas aqui.</p>
+              <p><strong>There are</strong> many people here.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Falar</h3>
+              <p>To speak/talk</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>falo</strong> português.</p>
+              <p>I <strong>speak</strong> Portuguese.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Sentir</h3>
+              <p>To feel</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>sinto</strong> frio.</p>
+              <p>I <strong>feel</strong> cold.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Chegar</h3>
+              <p>To arrive</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>chego</strong> cedo.</p>
+              <p>I <strong>arrive</strong> early.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Continuar</h3>
+              <p>To continue</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>continuo</strong> estudando.</p>
+              <p>I <strong>continue</strong> studying.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Amar</h3>
+              <p>To love</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>amo</strong> minha família.</p>
+              <p>I <strong>love</strong> my family.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Pensar</h3>
+              <p>To think</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>penso</strong> muito.</p>
+              <p>I <strong>think</strong> a lot.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ouvir</h3>
+              <p>To hear/listen</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>ouço</strong> música.</p>
+              <p>I <strong>listen</strong> to music.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Conhecer</h3>
+              <p>To know (a person/place)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>conheço</strong> o Brasil.</p>
+              <p>I <strong>know</strong> Brazil.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Trazer</h3>
+              <p>To bring</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>trago</strong> comida.</p>
+              <p>I <strong>bring</strong> food.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Pedir</h3>
+              <p>To ask for/request</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>peço</strong> ajuda.</p>
+              <p>I <strong>ask for</strong> help.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Encontrar</h3>
+              <p>To find/meet</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>encontro</strong> meus amigos.</p>
+              <p>I <strong>meet</strong> my friends.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Conseguir</h3>
+              <p>To manage/achieve</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>consigo</strong> terminar.</p>
+              <p>I <strong>manage</strong> to finish.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Trabalhar</h3>
+              <p>To work</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>trabalho</strong> muito.</p>
+              <p>I <strong>work</strong> a lot.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Comer</h3>
+              <p>To eat</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>como</strong> arroz.</p>
+              <p>I <strong>eat</strong> rice.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Morar</h3>
+              <p>To live (reside)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>moro</strong> no Brasil.</p>
+              <p>I <strong>live</strong> in Brazil.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Convidar</h3>
+              <p>To invite</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>convido</strong> você.</p>
+              <p>I <strong>invite</strong> you.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Chamar</h3>
+              <p>To call</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>chamo</strong> meu amigo.</p>
+              <p>I <strong>call</strong> my friend.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Esperar</h3>
+              <p>To wait/hope</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>espero</strong> o ônibus.</p>
+              <p>I <strong>wait</strong> for the bus.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Estudar</h3>
+              <p>To study</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>estudo</strong> português.</p>
+              <p>I <strong>study</strong> Portuguese.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Começar</h3>
+              <p>To begin/start</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>começo</strong> agora.</p>
+              <p>I <strong>start</strong> now.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Achar</h3>
+              <p>To find/think</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>acho</strong> interessante.</p>
+              <p>I <strong>think</strong> it's interesting.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Mudar</h3>
+              <p>To change/move</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>mudo</strong> de casa.</p>
+              <p>I <strong>move</strong> house.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Perder</h3>
+              <p>To lose</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>perco</strong> tempo.</p>
+              <p>I <strong>lose</strong> time.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Lembrar</h3>
+              <p>To remember</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>lembro</strong> de você.</p>
+              <p>I <strong>remember</strong> you.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Nascer</h3>
+              <p>To be born</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>nasci</strong> em janeiro.</p>
+              <p>I <strong>was born</strong> in January.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Entender</h3>
+              <p>To understand</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>entendo</strong> inglês.</p>
+              <p>I <strong>understand</strong> English.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Perguntar</h3>
+              <p>To ask (question)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>pergunto</strong> muito.</p>
+              <p>I <strong>ask</strong> a lot.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Passar</h3>
+              <p>To pass/spend (time)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>passo</strong> férias aqui.</p>
+              <p>I <strong>spend</strong> vacation here.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Compreender</h3>
+              <p>To comprehend</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>compreendo</strong> bem.</p>
+              <p>I <strong>comprehend</strong> well.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Dever</h3>
+              <p>To owe/should</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>devo</strong> estudar.</p>
+              <p>I <strong>should</strong> study.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Comprar</h3>
+              <p>To buy</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>compro</strong> pão.</p>
+              <p>I <strong>buy</strong> bread.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ler</h3>
+              <p>To read</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>leio</strong> livros.</p>
+              <p>I <strong>read</strong> books.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Beber</h3>
+              <p>To drink</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>bebo</strong> água.</p>
+              <p>I <strong>drink</strong> water.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Escrever</h3>
+              <p>To write</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>escrevo</strong> cartas.</p>
+              <p>I <strong>write</strong> letters.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Assistir</h3>
+              <p>To watch</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>assisto</strong> filmes.</p>
+              <p>I <strong>watch</strong> movies.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Sentar</h3>
+              <p>To sit</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>sento</strong> aqui.</p>
+              <p>I <strong>sit</strong> here.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Levantar</h3>
+              <p>To stand/get up</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>levanto</strong> cedo.</p>
+              <p>I <strong>get up</strong> early.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Jogar</h3>
+              <p>To play (sports/games)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>jogo</strong> futebol.</p>
+              <p>I <strong>play</strong> soccer.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Aprender</h3>
+              <p>To learn</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>aprendo</strong> rápido.</p>
+              <p>I <strong>learn</strong> fast.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ensinar</h3>
+              <p>To teach</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>ensino</strong> português.</p>
+              <p>I <strong>teach</strong> Portuguese.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Mostrar</h3>
+              <p>To show</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>mostro</strong> fotos.</p>
+              <p>I <strong>show</strong> photos.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Levar</h3>
+              <p>To take/carry</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>levo</strong> comida.</p>
+              <p>I <strong>take</strong> food.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Voltar</h3>
+              <p>To return/come back</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>volto</strong> amanhã.</p>
+              <p>I <strong>return</strong> tomorrow.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Parar</h3>
+              <p>To stop</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>paro</strong> aqui.</p>
+              <p>I <strong>stop</strong> here.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Usar</h3>
+              <p>To use</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>uso</strong> óculos.</p>
+              <p>I <strong>use</strong> glasses.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Gostar</h3>
+              <p>To like</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>gosto</strong> de música.</p>
+              <p>I <strong>like</strong> music.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Viajar</h3>
+              <p>To travel</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>viajo</strong> muito.</p>
+              <p>I <strong>travel</strong> a lot.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Voar</h3>
+              <p>To fly</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>O avião <strong>voa</strong> alto.</p>
+              <p>The plane <strong>flies</strong> high.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Andar</h3>
+              <p>To walk</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>ando</strong> rápido.</p>
+              <p>I <strong>walk</strong> fast.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Conectar</h3>
+              <p>To connect</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>conecto</strong> à internet.</p>
+              <p>I <strong>connect</strong> to the internet.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Desconectar</h3>
+              <p>To disconnect</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>desconecto</strong> o cabo.</p>
+              <p>I <strong>disconnect</strong> the cable.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ignorar</h3>
+              <p>To ignore</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>ignoro</strong> o barulho.</p>
+              <p>I <strong>ignore</strong> the noise.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Preferir</h3>
+              <p>To prefer</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>prefiro</strong> café.</p>
+              <p>I <strong>prefer</strong> coffee.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Participar</h3>
+              <p>To participate</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>participo</strong> do evento.</p>
+              <p>I <strong>participate</strong> in the event.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Perceber</h3>
+              <p>To perceive/notice</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>percebo</strong> a diferença.</p>
+              <p>I <strong>notice</strong> the difference.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Aparecer</h3>
+              <p>To appear</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>O sol <strong>aparece</strong> cedo.</p>
+              <p>The sun <strong>appears</strong> early.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Desaparecer</h3>
+              <p>To disappear</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>O gato <strong>desaparece</strong> rápido.</p>
+              <p>The cat <strong>disappears</strong> quickly.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Brincar</h3>
+              <p>To play (games)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>brinco</strong> com meus filhos.</p>
+              <p>I <strong>play</strong> with my children.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Ligar</h3>
+              <p>To call/turn on</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>ligo</strong> para você.</p>
+              <p>I <strong>call</strong> you.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Desligar</h3>
+              <p>To turn off/hang up</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>desligo</strong> o telefone.</p>
+              <p>I <strong>hang up</strong> the phone.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Dançar</h3>
+              <p>To dance</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>danço</strong> samba.</p>
+              <p>I <strong>dance</strong> samba.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Dormir</h3>
+              <p>To sleep</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>dormo</strong> cedo.</p>
+              <p>I <strong>sleep</strong> early.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Correr</h3>
+              <p>To run</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>corro</strong> todos os dias.</p>
+              <p>I <strong>run</strong> every day.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Nadar</h3>
+              <p>To swim</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>nado</strong> no mar.</p>
+              <p>I <strong>swim</strong> in the sea.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Odiar</h3>
+              <p>To hate</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>odeio</strong> acordar cedo.</p>
+              <p>I <strong>hate</strong> waking up early.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Resolver</h3>
+              <p>To solve/resolve</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>resolvo</strong> problemas.</p>
+              <p>I <strong>solve</strong> problems.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Guardar</h3>
+              <p>To keep/save/store</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>guardo</strong> dinheiro.</p>
+              <p>I <strong>save</strong> money.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Receber</h3>
+              <p>To receive</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>recebo</strong> cartas.</p>
+              <p>I <strong>receive</strong> letters.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Enviar</h3>
+              <p>To send</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>envio</strong> mensagens.</p>
+              <p>I <strong>send</strong> messages.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Descobrir</h3>
+              <p>To discover</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>descubro</strong> novidades.</p>
+              <p>I <strong>discover</strong> news.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Construir</h3>
+              <p>To build</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>construo</strong> casas.</p>
+              <p>I <strong>build</strong> houses.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Destruir</h3>
+              <p>To destroy</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>destruo</strong> obstáculos.</p>
+              <p>I <strong>destroy</strong> obstacles.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Repetir</h3>
+              <p>To repeat</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>repito</strong> a lição.</p>
+              <p>I <strong>repeat</strong> the lesson.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Esquecer</h3>
+              <p>To forget</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>esqueço</strong> nomes.</p>
+              <p>I <strong>forget</strong> names.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Almoçar</h3>
+              <p>To have lunch</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>almoço</strong> ao meio-dia.</p>
+              <p>I <strong>have lunch</strong> at noon.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Jantar</h3>
+              <p>To have dinner</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>janto</strong> à noite.</p>
+              <p>I <strong>have dinner</strong> at night.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Tomar</h3>
+              <p>To take/drink</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>tomo</strong> café.</p>
+              <p>I <strong>drink</strong> coffee.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Sentir falta</h3>
+              <p>To miss (someone)</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>sinto falta</strong> de você.</p>
+              <p>I <strong>miss</strong> you.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Desenhar</h3>
+              <p>To draw</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>desenho</strong> paisagens.</p>
+              <p>I <strong>draw</strong> landscapes.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Fotografar</h3>
+              <p>To photograph/take pictures</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>fotografo</strong> pessoas.</p>
+              <p>I <strong>photograph</strong> people.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Descansar</h3>
+              <p>To rest</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>descanso</strong> no domingo.</p>
+              <p>I <strong>rest</strong> on Sunday.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Experimentar</h3>
+              <p>To try/experience</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>experimento</strong> comidas novas.</p>
+              <p>I <strong>try</strong> new foods.</p>
+            </div>
+          </div>
+          <div class="verb-card">
+            <div class="verb-content">
+              <h3>Desistir</h3>
+              <p>To give up/quit</p>
+            </div>
+            <button class="audio-btn">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="verb-examples">
+              <p>Eu <strong>desisto</strong> fácil.</p>
+              <p>I <strong>give up</strong> easily.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vocabulary Section -->
+      <section class="learning-section" id="vocabulary">
+        <div class="section-header">
+          <h2><i class="fas fa-book"></i> Core Vocabulary</h2>
+          <p>Learn the most frequently used words in Portuguese</p>
+        </div>
+        <div class="card-body" id="wordsBody">
+          <ol class="numbered-list">
+            <li>
+              <div class="phrase-container">
+                <span><strong>Oi</strong> - Hi / Hello</span>
+                <button class="audio-btn" onclick="playAudio('Oi')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Olá</strong> - Hello</span>
+                <button class="audio-btn" onclick="playAudio('Olá')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Tchau</strong> - Bye / Goodbye</span>
+                <button class="audio-btn" onclick="playAudio('Tchau')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Por favor</strong> - Please</span>
+                <button class="audio-btn" onclick="playAudio('Por favor')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Obrigado</strong> - Thank you (masculino)</span>
+                <button class="audio-btn" onclick="playAudio('Obrigado')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Obrigada</strong> - Thank you (feminino)</span>
+                <button class="audio-btn" onclick="playAudio('Obrigada')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Sim</strong> - Yes</span>
+                <button class="audio-btn" onclick="playAudio('Sim')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Não</strong> - No</span>
+                <button class="audio-btn" onclick="playAudio('Não')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Bom</strong> - Good</span>
+                <button class="audio-btn" onclick="playAudio('Bom')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Ruim</strong> - Bad</span>
+                <button class="audio-btn" onclick="playAudio('Ruim')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Grande</strong> - Big / Large</span>
+                <button class="audio-btn" onclick="playAudio('Grande')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Pequeno</strong> - Small / Little</span>
+                <button class="audio-btn" onclick="playAudio('Pequeno')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span
+                  ><strong>Bonito</strong> - Beautiful / Pretty / Handsome</span
+                >
+                <button class="audio-btn" onclick="playAudio('Bonito')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Feio</strong> - Ugly</span>
+                <button class="audio-btn" onclick="playAudio('Feio')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Feliz</strong> - Happy</span>
+                <button class="audio-btn" onclick="playAudio('Feliz')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Triste</strong> - Sad</span>
+                <button class="audio-btn" onclick="playAudio('Triste')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Amor</strong> - Love</span>
+                <button class="audio-btn" onclick="playAudio('Amor')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Ódio</strong> - Hate</span>
+                <button class="audio-btn" onclick="playAudio('Ódio')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Dia</strong> - Day</span>
+                <button class="audio-btn" onclick="playAudio('Dia')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Noite</strong> - Night</span>
+                <button class="audio-btn" onclick="playAudio('Noite')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Sol</strong> - Sun</span>
+                <button class="audio-btn" onclick="playAudio('Sol')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Lua</strong> - Moon</span>
+                <button class="audio-btn" onclick="playAudio('Lua')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Água</strong> - Water</span>
+                <button class="audio-btn" onclick="playAudio('Água')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Comida</strong> - Food</span>
+                <button class="audio-btn" onclick="playAudio('Comida')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Bebida</strong> - Drink / Beverage</span>
+                <button class="audio-btn" onclick="playAudio('Bebida')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Casa</strong> - House / Home</span>
+                <button class="audio-btn" onclick="playAudio('Casa')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Rua</strong> - Street</span>
+                <button class="audio-btn" onclick="playAudio('Rua')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Cidade</strong> - City</span>
+                <button class="audio-btn" onclick="playAudio('Cidade')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>País</strong> - Country</span>
+                <button class="audio-btn" onclick="playAudio('País')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span
+                  ><strong>Tempo</strong> - Time / Weather (depende do
+                  contexto)</span
+                >
+                <button class="audio-btn" onclick="playAudio('Tempo')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Quente</strong> - Hot</span>
+                <button class="audio-btn" onclick="playAudio('Quente')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Frio</strong> - Cold</span>
+                <button class="audio-btn" onclick="playAudio('Frio')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Eu</strong> - I</span>
+                <button class="audio-btn" onclick="playAudio('Eu')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Você</strong> - You</span>
+                <button class="audio-btn" onclick="playAudio('Você')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Ele</strong> - He</span>
+                <button class="audio-btn" onclick="playAudio('Ele')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Ela</strong> - She</span>
+                <button class="audio-btn" onclick="playAudio('Ela')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>A gente</strong> - We / Us (informal)</span>
+                <button class="audio-btn" onclick="playAudio('A gente')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Vocês</strong> - You (plural)</span>
+                <button class="audio-btn" onclick="playAudio('Vocês')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Eles</strong> - They (masculino/misto)</span>
+                <button class="audio-btn" onclick="playAudio('Eles')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Elas</strong> - They (feminino)</span>
+                <button class="audio-btn" onclick="playAudio('Elas')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Nós</strong> - We</span>
+                <button class="audio-btn" onclick="playAudio('Nós')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Pai</strong> - Father / Dad</span>
+                <button class="audio-btn" onclick="playAudio('Pai')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Mãe</strong> - Mother / Mom</span>
+                <button class="audio-btn" onclick="playAudio('Mãe')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Irmão</strong> - Brother</span>
+                <button class="audio-btn" onclick="playAudio('Irmão')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Irmã</strong> - Sister</span>
+                <button class="audio-btn" onclick="playAudio('Irmã')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Amigo</strong> - Friend</span>
+                <button class="audio-btn" onclick="playAudio('Amigo')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Inimigo</strong> - Enemy</span>
+                <button class="audio-btn" onclick="playAudio('Inimigo')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Trabalho</strong> - Work / Job</span>
+                <button class="audio-btn" onclick="playAudio('Trabalho')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Escola</strong> - School</span>
+                <button class="audio-btn" onclick="playAudio('Escola')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Livro</strong> - Book</span>
+                <button class="audio-btn" onclick="playAudio('Livro')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Filme</strong> - Movie / Film</span>
+                <button class="audio-btn" onclick="playAudio('Filme')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Música</strong> - Music</span>
+                <button class="audio-btn" onclick="playAudio('Música')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span
+                  ><strong>Tu</strong> - You (arcaico, mas ainda usado em
+                  algumas regiões)</span
+                >
+                <button class="audio-btn" onclick="playAudio('Tu')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Jogo</strong> - Game</span>
+                <button class="audio-btn" onclick="playAudio('Jogo')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Dinheiro</strong> - Money</span>
+                <button class="audio-btn" onclick="playAudio('Dinheiro')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Relógio</strong> - Clock / Watch</span>
+                <button class="audio-btn" onclick="playAudio('Relógio')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Comprar</strong> - To buy</span>
+                <button class="audio-btn" onclick="playAudio('Comprar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Vender</strong> - To sell</span>
+                <button class="audio-btn" onclick="playAudio('Vender')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Comer</strong> - To eat</span>
+                <button class="audio-btn" onclick="playAudio('Comer')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Beber</strong> - To drink</span>
+                <button class="audio-btn" onclick="playAudio('Beber')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Dormir</strong> - To sleep</span>
+                <button class="audio-btn" onclick="playAudio('Dormir')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Acordar</strong> - To wake up</span>
+                <button class="audio-btn" onclick="playAudio('Acordar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Correr</strong> - To run</span>
+                <button class="audio-btn" onclick="playAudio('Correr')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Andar</strong> - To walk</span>
+                <button class="audio-btn" onclick="playAudio('Andar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Nadar</strong> - To swim</span>
+                <button class="audio-btn" onclick="playAudio('Nadar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Voar</strong> - To fly</span>
+                <button class="audio-btn" onclick="playAudio('Voar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Ler</strong> - To read</span>
+                <button class="audio-btn" onclick="playAudio('Ler')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Escrever</strong> - To write</span>
+                <button class="audio-btn" onclick="playAudio('Escrever')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Falar</strong> - To speak / To talk</span>
+                <button class="audio-btn" onclick="playAudio('Falar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Ouvir</strong> - To hear / To listen</span>
+                <button class="audio-btn" onclick="playAudio('Ouvir')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Ver</strong> - To see</span>
+                <button class="audio-btn" onclick="playAudio('Ver')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Assistir</strong> - To watch</span>
+                <button class="audio-btn" onclick="playAudio('Assistir')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Entender</strong> - To understand</span>
+                <button class="audio-btn" onclick="playAudio('Entender')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Conversar</strong> - To converse / To talk</span>
+                <button class="audio-btn" onclick="playAudio('Conversar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Aprender</strong> - To learn</span>
+                <button class="audio-btn" onclick="playAudio('Aprender')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Ensinar</strong> - To teach</span>
+                <button class="audio-btn" onclick="playAudio('Ensinar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span
+                  ><strong>Saber</strong> - To know (facts/information)</span
+                >
+                <button class="audio-btn" onclick="playAudio('Saber')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span
+                  ><strong>Conhecer</strong> - To know (people/places/be
+                  familiar with)</span
+                >
+                <button class="audio-btn" onclick="playAudio('Conhecer')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Viajar</strong> - To travel</span>
+                <button class="audio-btn" onclick="playAudio('Viajar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Chegar</strong> - To arrive</span>
+                <button class="audio-btn" onclick="playAudio('Chegar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Sair</strong> - To leave / To go out</span>
+                <button class="audio-btn" onclick="playAudio('Sair')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span
+                  ><strong>Entrar</strong> - To enter / To come in / To go
+                  in</span
+                >
+                <button class="audio-btn" onclick="playAudio('Entrar')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Partir</strong> - To leave / To depart</span>
+                <button class="audio-btn" onclick="playAudio('Partir')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Ajuda</strong> - Help / Aid</span>
+                <button class="audio-btn" onclick="playAudio('Ajuda')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Pergunta</strong> - Question</span>
+                <button class="audio-btn" onclick="playAudio('Pergunta')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Resposta</strong> - Answer / Response</span>
+                <button class="audio-btn" onclick="playAudio('Resposta')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Problema</strong> - Problem</span>
+                <button class="audio-btn" onclick="playAudio('Problema')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Solução</strong> - Solution</span>
+                <button class="audio-btn" onclick="playAudio('Solução')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Saúde</strong> - Health</span>
+                <button class="audio-btn" onclick="playAudio('Saúde')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span
+                  ><strong>Doença</strong> - Illness / Disease / Sickness</span
+                >
+                <button class="audio-btn" onclick="playAudio('Doença')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Médico</strong> - Doctor</span>
+                <button class="audio-btn" onclick="playAudio('Médico')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Hospital</strong> - Hospital</span>
+                <button class="audio-btn" onclick="playAudio('Hospital')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Farmácia</strong> - Pharmacy / Drugstore</span>
+                <button class="audio-btn" onclick="playAudio('Farmácia')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Compra</strong> - Purchase / Buy (noun)</span>
+                <button class="audio-btn" onclick="playAudio('Compra')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Venda</strong> - Sale / Sell (noun)</span>
+                <button class="audio-btn" onclick="playAudio('Venda')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Beleza</strong> - Beauty</span>
+                <button class="audio-btn" onclick="playAudio('Beleza')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Certo</strong> - Correct / Right / Certain</span>
+                <button class="audio-btn" onclick="playAudio('Certo')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Errado</strong> - Wrong / Incorrect</span>
+                <button class="audio-btn" onclick="playAudio('Errado')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Esperança</strong> - Hope</span>
+                <button class="audio-btn" onclick="playAudio('Esperança')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+            <li>
+              <div class="phrase-container">
+                <span><strong>Amizade</strong> - Friendship</span>
+                <button class="audio-btn" onclick="playAudio('Amizade')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Phrases Section -->
+      <section class="learning-section" id="phrases">
+        <div class="section-header">
+          <h2><i class="fas fa-comments"></i> Useful Phrases</h2>
+          <p>Essential phrases for real-life situations</p>
+        </div>
+
+        <div class="phrases-accordion">
+          <!-- Greetings -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-handshake"></i> Cumprimentos e Introduções |
+                Greetings
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Oi, como você tá?</strong></p>
+                  <p>Hi, how are you? / Hey, how are you doing?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Oi, como você tá?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Opa, como vai?</strong></p>
+                  <p>Hey, how's it going? / What's up? (mais informal)</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Opa, como vai?')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>E aí, como cê tá?</strong></p>
+                  <p>What's up? / How are you doing? (bem informal)</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('E aí, como cê tá?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Qual é o seu nome?</strong></p>
+                  <p>What's your name?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é o seu nome?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Como você se chama?</strong></p>
+                  <p>What's your name?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Como você se chama?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Meu nome é [seu nome].</strong></p>
+                  <p>My name is [your name].</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Meu nome é João')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu sou o/a [seu nome].</strong></p>
+                  <p>I'm [your name].</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Eu sou o João')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu tenho [sua idade].</strong></p>
+                  <p>I'm [your age] years old.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu tenho 25 anos')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Prazer em te conhecer.</strong></p>
+                  <p>Nice to meet you.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Prazer em te conhecer')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>É um prazer.</strong></p>
+                  <p>It's a pleasure.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('É um prazer')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Bom dia.</strong></p>
+                  <p>Good morning.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Bom dia')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>'Dia.</strong></p>
+                  <p>Morning. (informal)</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Dia')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Boa tarde.</strong></p>
+                  <p>Good afternoon.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Boa tarde')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Boa noite.</strong></p>
+                  <p>
+                    Good evening (ao chegar) / Good night (ao sair/ir dormir).
+                  </p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Boa noite')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Tenha uma boa noite.</strong></p>
+                  <p>Have a good night.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Tenha uma boa noite')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Bom te ver de novo.</strong></p>
+                  <p>Good to see you again.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Bom te ver de novo')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Simple Conversation -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-comment-dots"></i> Conversas Simples | Simple
+                Conversation
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Como você tá?</strong></p>
+                  <p>How are you? / How are you doing?</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Como você tá?')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Como vai?</strong></p>
+                  <p>How's it going? / How are things?</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Como vai?')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Que bom te ver!</strong></p>
+                  <p>So good to see you! / Nice to see you!</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Que bom te ver!')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Quantos anos você tem?</strong></p>
+                  <p>How old are you?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Quantos anos você tem?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Que horas são?</strong></p>
+                  <p>What time is it?</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Que horas são?')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu sou de/do/da [seu país]</strong></p>
+                  <p>I'm from [your country].</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu sou do Brasil')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você é de onde?</strong></p>
+                  <p>Where are you from?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você é de onde?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você trabalha com o que?</strong></p>
+                  <p>What do you do for a living? / What's your job?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você trabalha com o que?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você trabalha aonde?</strong></p>
+                  <p>Where do you work?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você trabalha aonde?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Como vai o trabalho?</strong></p>
+                  <p>How's work?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Como vai o trabalho?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você tem filhos?</strong></p>
+                  <p>Do you have children?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você tem filhos?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Courtesy -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-user-friends"></i> Educação e Cortesia |
+                Courtesy
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Dá licença.</strong></p>
+                  <p>Excuse me.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Dá licença.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Por favor.</strong></p>
+                  <p>Please.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Por favor.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Só um segundo.</strong></p>
+                  <p>Just a second. / One moment.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Só um segundo.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Como?</strong></p>
+                  <p>Pardon? / Excuse me? / What was that?</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Como?')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Obrigado(a).</strong></p>
+                  <p>Thank you.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Obrigado')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Muito obrigado(a).</strong></p>
+                  <p>Thank you very much. / Thanks a lot.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Muito obrigado')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Brigadão!</strong></p>
+                  <p>Thanks! / Thanks a bunch! (informal)</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Brigadão!')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong>Muitíssimo obrigado(a)! / Valeu demais!</strong>
+                  </p>
+                  <p>Thank you so much! / Thanks a ton! (informal)</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Valeu demais!')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>De nada.</strong></p>
+                  <p>You're welcome. / No problem.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('De nada.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Sem problema! / Não se preocupa!</strong></p>
+                  <p>No problem! / Don't worry about it!</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Sem problema!')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Me desculpa. / Foi mal.</strong></p>
+                  <p>I'm sorry. / My bad. (informal)</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Me desculpa.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você poderia repetir, por favor?</strong></p>
+                  <p>Could you repeat that, please?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você poderia repetir, por favor?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong>Você pode falar mais devagar, por favor?</strong>
+                  </p>
+                  <p>Could you speak more slowly, please?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você pode falar mais devagar, por favor?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Language Learning -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-graduation-cap"></i> Aprendizagem de Idiomas |
+                Language Learning
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu tô aprendendo (idioma) agora.</strong></p>
+                  <p>
+                    I'm learning (language) now. / I'm currently learning
+                    (language).
+                  </p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu tô aprendendo inglês agora.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu comecei a aprendê-lo [tempo] atrás.</strong></p>
+                  <p>I started learning it [time] ago.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu comecei a aprendê-lo quatro meses atrás.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Esqueci.</strong></p>
+                  <p>I forgot.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Esqueci.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu esqueci a palavra.</strong></p>
+                  <p>I forgot the word.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu esqueci a palavra.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu esqueci como se diz isso.</strong></p>
+                  <p>I forgot how to say that.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu esqueci como se diz isso.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Como se diz [palavra]?</strong></p>
+                  <p>How do you say [word]?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Como se diz “carro”?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Qual o significado de [palavra]?</strong></p>
+                  <p>What's the meaning of [word]? / What does [word] mean?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual o significado de “saudade”?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>O que isso significa?</strong></p>
+                  <p>What does this mean?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('O que isso significa?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Quando se usa isso?</strong></p>
+                  <p>When do you use this?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Quando se usa isso?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Tá certo se eu disser [frase]?</strong></p>
+                  <p>
+                    Is it correct if I say [phrase]? / Is it correct to say
+                    [phrase]?
+                  </p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Tá certo se eu disser “Eu fui no mercado”?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >O que você acha do meu (idioma)? Seja sincero(a).</strong
+                    >
+                  </p>
+                  <p>What do you think of my (language)? Be honest.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('O que você acha do meu português? Seja sincero.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você tem alguma dica?</strong></p>
+                  <p>Do you have any tips?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você tem alguma dica?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Preferences -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-heart"></i> Falando sobre Preferências | Speak
+                Preferences
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu gosto de [algo/verbo]</strong></p>
+                  <p>I like [something/verb-ing].</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu gosto de futebol.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu não gosto de [algo/verbo]</strong></p>
+                  <p>I don't like [something/verb-ing].</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu não gosto de acordar cedo.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong>Você gosta de [série/filme/música/artista]?</strong>
+                  </p>
+                  <p>Do you like [series/movie/music/artist]?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você gosta de música clássica?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Cara, eu amo [algo/verbo]!</strong></p>
+                  <p>Man, I love [something/verb-ing]!</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Cara, eu amo andar de bicicleta!')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Você tem um(a) [artista/livro/país/cidade/etc]
+                      favorito(a)?</strong
+                    >
+                  </p>
+                  <p>Do you have a favorite [artist/book/country/city/etc]?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você tem um artista favorito?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você tem algum hobby?</strong></p>
+                  <p>Do you have any hobbies?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você tem algum hobby?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Qual é o seu tipo de comida favorito?</strong></p>
+                  <p>What's your favorite type of food?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é o seu tipo de comida favorito?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você pode me recomendar um filme bom?</strong></p>
+                  <p>Can you recommend a good movie?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você pode me recomendar um filme bom?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Qual é o seu esporte favorito?</strong></p>
+                  <p>What's your favorite sport?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é o seu esporte favorito?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Qual é o seu animal favorito?</strong></p>
+                  <p>What's your favorite animal?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é o seu animal favorito?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Eu sou torcedor do/da ou Eu torço pro/pra [time de
+                      esportes].</strong
+                    >
+                  </p>
+                  <p>I'm a fan of [sports team]. / I support [sports team].</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu sou torcedor do Flamengo.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Informações Pessoais -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-user"></i> Informações Pessoais | Personal
+                Information
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Você tem Instagram / Facebook / WhatsApp etc.?</strong
+                    >
+                  </p>
+                  <p>Do you have Instagram / Facebook / WhatsApp, etc.?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você tem Instagram?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Qual é o seu número?</strong></p>
+                  <p>What's your number?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é o seu número?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você mora aonde?</strong></p>
+                  <p>Where do you live?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você mora aonde?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Há quanto tempo você está aprendendo [idioma]?</strong
+                    >
+                  </p>
+                  <p>How long have you been learning [language]?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Há quanto tempo você está aprendendo português?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Me fala da sua família.</strong></p>
+                  <p>Tell me about your family.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Me fala da sua família.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você tem irmãos?</strong></p>
+                  <p>Do you have any siblings?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você tem irmãos?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Pedindo Ajuda -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-hands-helping"></i> Pedindo Ajuda | Asking for
+                help
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você pode me ajudar?</strong></p>
+                  <p>Can you help me?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você pode me ajudar?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Preciso de ajuda.</strong></p>
+                  <p>I need help.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Preciso de ajuda.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Estou perdido(a).</strong></p>
+                  <p>I'm lost.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Estou perdido.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Preciso de um médico.</strong></p>
+                  <p>I need a doctor.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Preciso de um médico.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu preciso de umas direções.</strong></p>
+                  <p>I need some directions.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu preciso de umas direções.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong>Onde fica a estação de trem mais próxima?</strong>
+                  </p>
+                  <p>Where's the nearest train station?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Onde fica a estação de trem mais próxima?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Onde fica a estação de metrô?</strong></p>
+                  <p>
+                    Where's the subway station? / Where's the metro station?
+                  </p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Onde fica a estação de metrô?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Viagem e Direções -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-map-marked-alt"></i> Viagem e Direções | Travel
+                and Directions
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu amo viajar.</strong></p>
+                  <p>I love to travel. / I love traveling.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Eu amo viajar.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Como eu chego em [lugar]?</strong></p>
+                  <p>How do I get to [place]?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Como eu chego em Copacabana?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Qual é a melhor maneira de chegar lá?</strong></p>
+                  <p>What's the best way to get there?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é a melhor maneira de chegar lá?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Onde fica o [transporte] mais próximo?</strong></p>
+                  <p>Where's the nearest [transportation]?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Onde fica o metrô mais próximo?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Que horas o [lugar] fecha?</strong></p>
+                  <p>What time does [place] close?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Que horas o supermercado fecha?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Onde posso encontrar um táxi?</strong></p>
+                  <p>Where can I find a taxi?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Onde posso encontrar um táxi?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Como eu chego ao aeroporto?</strong></p>
+                  <p>How do I get to the airport?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Como eu chego ao aeroporto?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong>Onde fica o ponto de ônibus mais próximo?</strong>
+                  </p>
+                  <p>Where's the nearest bus stop?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Onde fica o ponto de ônibus mais próximo?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Compras e Serviços -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-shopping-cart"></i> Compras e Serviços |
+                Shopping and Services
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Quanto custa a entrada?</strong></p>
+                  <p>How much is the entrance fee? / How much is admission?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Quanto custa a entrada?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Quanto isso custa?</strong></p>
+                  <p>How much does this cost? / How much is this?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Quanto isso custa?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Posso experimentar aquilo? / Posso experimentar
+                      isso?</strong
+                    >
+                  </p>
+                  <p>Can I try that on? / Can I try this on?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Posso experimentar isso?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Onde posso comprar [item]?</strong></p>
+                  <p>Where can I buy [item]?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Onde posso comprar pão?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu tenho uma reserva.</strong></p>
+                  <p>I have a reservation.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu tenho uma reserva.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Posso ter um copo d’água?</strong></p>
+                  <p>Can I have a glass of water?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Posso ter um copo d’água?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Onde posso encontrar um banco?</strong></p>
+                  <p>Where can I find a bank?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Onde posso encontrar um banco?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Qual é a taxa de câmbio?</strong></p>
+                  <p>What's the exchange rate?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é a taxa de câmbio?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Comendo Fora -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3><i class="fas fa-utensils"></i> Comendo Fora | Eating Out</h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>O que tem no menu?</strong></p>
+                  <p>What's on the menu?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('O que tem no menu?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Posso ver o menu de sobremesas?</strong></p>
+                  <p>Can I see the dessert menu?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Posso ver o menu de sobremesas?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Tô com fome.</strong></p>
+                  <p>I'm hungry.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Tô com fome.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Tô com sede.</strong></p>
+                  <p>I'm thirsty.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Tô com sede.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong>Você pode recomendar um bom restaurante?</strong>
+                  </p>
+                  <p>Can you recommend a good restaurant?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você pode recomendar um bom restaurante?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Posso receber a conta, por favor?</strong></p>
+                  <p>
+                    Can I have the check, please? / Can I have the bill, please?
+                  </p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Posso receber a conta, por favor?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Saúde e Bem-Estar -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3>
+                <i class="fas fa-heartbeat"></i> Saúde e Bem-Estar | Health and
+                Well-being
+              </h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu tô resfriado(a).</strong></p>
+                  <p>I have a cold.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu tô resfriado.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu tô com dor de cabeça.</strong></p>
+                  <p>I have a headache.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu tô com dor de cabeça.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Eu preciso de um tempo / um descanso / uma pausa.</strong
+                    >
+                  </p>
+                  <p>I need some time / a rest / a break.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu preciso de um descanso.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Onde fica a farmácia mais próxima?</strong></p>
+                  <p>
+                    Where's the nearest pharmacy? / Where's the nearest
+                    drugstore?
+                  </p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Onde fica a farmácia mais próxima?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu tô melhor agora, obrigado(a).</strong></p>
+                  <p>I'm feeling better now, thank you.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu tô melhor agora, obrigado.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Onde posso achar um médico?</strong></p>
+                  <p>Where can I find a doctor?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Onde posso achar um médico?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Não tô me sentindo muito bem.</strong></p>
+                  <p>I'm not feeling very well.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Não tô me sentindo muito bem.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Tem um hospital por perto?</strong></p>
+                  <p>Is there a hospital nearby?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Tem um hospital por perto?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Diversos -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3><i class="fas fa-ellipsis-h"></i> Diversos | Several</h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu tenho uma pergunta.</strong></p>
+                  <p>I have a question.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu tenho uma pergunta.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu não sei.</strong></p>
+                  <p>I don't know.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Eu não sei.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Não tenho certeza.</strong></p>
+                  <p>I'm not sure.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Não tenho certeza.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu não sabia disso.</strong></p>
+                  <p>I didn't know that.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu não sabia disso.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Ah é? / Sério?</strong></p>
+                  <p>Oh really? / Really?</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Sério?')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Nossa, que doideira…</strong></p>
+                  <p>Wow, that's crazy... / That's wild...</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Nossa, que doideira...')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Qual é a diferença entre [palavra] e [palavra
+                      similar]?</strong
+                    >
+                  </p>
+                  <p>
+                    What's the difference between [word] and [similar word]?
+                  </p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é a diferença entre “ser” e “estar”?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Tô de férias.</strong></p>
+                  <p>I'm on vacation. / I'm on holiday.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Tô de férias.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu sou estudante.</strong></p>
+                  <p>I'm a student.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu sou estudante.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Eu sou professor(a).</strong></p>
+                  <p>I'm a teacher.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Eu sou professor.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Qual é o seu feriado favorito?</strong></p>
+                  <p>What's your favorite holiday?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é o seu feriado favorito?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Você pode me mostrar no mapa?</strong></p>
+                  <p>Can you show me on the map?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Você pode me mostrar no mapa?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Qual é o seu lugar favorito em/na/no
+                      [cidade/estado/país]?</strong
+                    >
+                  </p>
+                  <p>What's your favorite place in [city/state/country]?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Qual é o seu lugar favorito no Brasil?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Posso tirar uma foto?</strong></p>
+                  <p>Can I take a picture?</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Posso tirar uma foto?')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Despedida -->
+          <div class="phrase-category">
+            <div class="category-header">
+              <h3><i class="fas fa-sign-out-alt"></i> Despedida | Farewell</h3>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="phrase-list">
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Beleza, te vejo depois!</strong></p>
+                  <p>Alright, see you later!</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Beleza, te vejo depois!')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Te vejo em breve.</strong></p>
+                  <p>See you soon.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Te vejo em breve.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Foi ótimo te conhecer!</strong></p>
+                  <p>It was great meeting you!</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Foi ótimo te conhecer!')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Tenha um bom dia.</strong></p>
+                  <p>Have a good day.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Tenha um bom dia.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Tenha um bom fim de semana. / Aproveita o fim de
+                      semana.</strong
+                    >
+                  </p>
+                  <p>Have a good weekend. / Enjoy your weekend.</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Tenha um bom fim de semana.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Aproveita lá no(a) [evento]!</strong></p>
+                  <p>Have fun at the [event]! / Enjoy the [event]!</p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Aproveita lá no show!')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p><strong>Se cuida.</strong></p>
+                  <p>Take care.</p>
+                </div>
+                <button class="audio-btn" onclick="playAudio('Se cuida.')">
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+              <div class="phrase-item">
+                <div class="phrase-text">
+                  <p>
+                    <strong
+                      >Me manda mensagem quando chegar/estiver em casa.</strong
+                    >
+                  </p>
+                  <p>
+                    Text me when you get home. / Let me know when you're home.
+                  </p>
+                </div>
+                <button
+                  class="audio-btn"
+                  onclick="playAudio('Me manda mensagem quando chegar em casa.')"
+                >
+                  <i class="fas fa-volume-up"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resources Section -->
+      <section class="learning-section" id="resources">
+        <div class="section-header">
+          <h2><i class="fas fa-podcast"></i> Learning Resources</h2>
+          <p>Podcasts, videos and tools to accelerate your learning</p>
+        </div>
+
+        <div class="resources-tabs">
+          <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="podcasts">Podcasts</button>
+            <button class="tab-btn" data-tab="videos">Videos</button>
+            <button class="tab-btn" data-tab="tools">Tools</button>
+          </div>
+
+          <style>
+            .resources-tabs .tab-content ul {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            }
+
+            .resources-tabs .tab-content ul li {
+              background: var(--surface);
+              border-radius: 10px;
+              box-shadow: 0 2px 8px rgba(67, 97, 238, 0.06);
+              margin-bottom: 16px;
+              padding: 18px 22px;
+              transition: box-shadow 0.2s, background 0.2s;
+              display: flex;
+              align-items: center;
+            }
+
+            .resources-tabs .tab-content ul li:hover {
+              box-shadow: 0 4px 16px rgba(67, 97, 238, 0.12);
+              background: var(--primary-light);
+              color: #fff;
+            }
+
+            .resources-tabs .tab-content ul li a {
+              text-decoration: none;
+              color: var(--primary);
+              font-weight: 600;
+              font-size: 1.05rem;
+              transition: color 0.2s;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            }
+
+            .resources-tabs .tab-content ul li:hover a {
+              color: #fff;
+            }
+
+            .resources-tabs .tab-content ul li a strong {
+              font-size: 1.1rem;
+              margin-right: 8px;
+            }
+
+            @media (max-width: 600px) {
+              .resources-tabs .tab-content ul li {
+                padding: 14px 12px;
+                font-size: 0.98rem;
+              }
+
+              .resources-tabs .tab-content ul li a strong {
+                font-size: 1rem;
+              }
+            }
+          </style>
+          <div class="tab-content active" id="podcasts">
+            <ul>
+              <li>
+                <a
+                  href="https://open.spotify.com/show/0ApvDzfxLXpDLnSFxyDzE5?si=2aa3e22b5a884862"
+                  target="_blank"
+                >
+                  <strong>Learn Brazilian Portuguese - LinguaBoost</strong> –
+                  Curso de áudio com frases do dia a dia.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://open.spotify.com/show/3HsmfbYBBwLDuZgyvvCRa1?si=603b5981e6c34e2a"
+                  target="_blank"
+                >
+                  <strong>Learn Brazilian Portuguese</strong> – Lições práticas
+                  do português informal.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://open.spotify.com/show/7bqpF6oR6mifWxM8PMHU2Y?si=cb4ae98a2f5a4eef"
+                  target="_blank"
+                >
+                  <strong>Speaking Brazilian Podcast</strong> – Dicas de
+                  gramática, vocabulário e pronúncia.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://open.spotify.com/show/5JifZ6oABMvmshGw9pGBNV?si=47f3beb1a1c8437f"
+                  target="_blank"
+                >
+                  <strong>Português com Letícia</strong> – Aulas e testes para
+                  dominar o idioma.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://open.spotify.com/show/7DNyvheqLYge3zrIsZduPA?si=90aee5ec49934ed1"
+                  target="_blank"
+                >
+                  <strong>PodPeople</strong> – Conversas sobre vida, arte,
+                  ciência e sociedade.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://open.spotify.com/show/0tex61CKrQ0InxdgdRmqf7?si=da7704c6456848b1"
+                  target="_blank"
+                >
+                  <strong>Intermediate Portuguese Podcast</strong> – Pratique
+                  português europeu com conteúdo autêntico.
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content" id="videos">
+            <ul>
+              <li>
+                <a
+                  href="https://www.youtube.com/@SpeakingBrazilian"
+                  target="_blank"
+                >
+                  <strong>Speaking Brazilian</strong> – Canal com aulas e dicas
+                  para estrangeiros.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@PracticePortuguese"
+                  target="_blank"
+                >
+                  <strong>Practice Portuguese</strong> – Vídeos para praticar
+                  português europeu e brasileiro.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@PortuguesePod101"
+                  target="_blank"
+                >
+                  <strong>PortuguesePod101</strong> – Lições em vídeo para todos
+                  os níveis.
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content" id="tools">
+            <ul>
+              <li>
+                <a
+                  href="https://www.languageguide.org/vocabulary/?lang=pt&target=en"
+                  target="_blank"
+                >
+                  <strong>LanguageGuide.org</strong> – Vocabulário ilustrado com
+                  áudio para prática de português.
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.duolingo.com/course/pt/en/Learn-Portuguese"
+                  target="_blank"
+                >
+                  <strong>Duolingo</strong> – Curso gratuito de português com
+                  exercícios interativos.
+                </a>
+              </li>
+              <li>
+                <a href="https://www.memrise.com/" target="_blank">
+                  <strong>Memrise</strong> – Ferramenta para aprender
+                  vocabulário e frases em português.
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linguee.com.br/" target="_blank">
+                  <strong>Linguee</strong> – Dicionário e tradutor
+                  português-inglês com exemplos reais.
+                </a>
+              </li>
+              <li>
+                <a href="https://www.wordreference.com/pten/" target="_blank">
+                  <strong>WordReference</strong> – Dicionário online com
+                  conjugação de verbos.
+                </a>
+              </li>
+              <li>
+                <a href="https://www.conjuga-me.net/" target="_blank">
+                  <strong>Conjuga-me</strong> – Ferramenta para conjugar verbos
+                  em português.
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Adicione isso ANTES do </body> -->
+    <div
+      id="languageExchangeModal"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div
+        style="
+          background: white;
+          border-radius: 15px;
+          width: 90%;
+          max-width: 500px;
+          padding: 25px;
+          position: relative;
+        "
+      >
+        <button
+          id="closeModalBtn"
+          style="
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+          "
+        >
+          ×
+        </button>
+
+        <div style="text-align: center; margin-bottom: 20px">
+          <div
+            style="
+              width: 70px;
+              height: 70px;
+              background: #4361ee;
+              border-radius: 50%;
+              display: inline-flex;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 15px;
+            "
+          >
+            <i
+              class="fas fa-exchange-alt"
+              style="color: white; font-size: 30px"
+            ></i>
+          </div>
+          <h3 style="color: #4361ee; margin-bottom: 5px">
+            Do you want to practice Portuguese for FREE with me?
+          </h3>
+          <p style="color: #666; font-size: 14px">
+            I help you with Portuguese and you help me with English.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 15px; margin-bottom: 25px">
+          <div
+            style="
+              flex: 1;
+              background: #f5f7ff;
+              padding: 15px;
+              border-radius: 10px;
+            "
+          >
+            <h4 style="color: #4361ee; font-size: 16px; margin-bottom: 15px">
+              You receive:
+            </h4>
+            <ul style="padding-left: 20px; color: #555; font-size: 14px">
+              <li style="margin-bottom: 8px">Ask questions</li>
+              <li style="margin-bottom: 8px">Natural conversation</li>
+              <li>Instant fixes</li>
+            </ul>
+          </div>
+
+          <div
+            style="
+              flex: 1;
+              background: #f0f9ff;
+              padding: 15px;
+              border-radius: 10px;
+            "
+          >
+            <h4 style="color: #4cc9f0; font-size: 16px; margin-bottom: 15px">
+              You offer::
+            </h4>
+            <ul style="padding-left: 20px; color: #555; font-size: 14px">
+              <li style="margin-bottom: 8px">Practice your language</li>
+              <li style="margin-bottom: 8px">Ask questions</li>
+              <li>Conversation</li>
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href="https://wa.me/5521977297049?text=Olá%20Kaique!%20Vamos%20fazer%20um%20intercâmbio%20linguístico?"
+          style="
+            display: block;
+            background: #25d366;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 10px;
+          "
+        >
+          <i class="fab fa-whatsapp"></i>Start on WhatsApp
+        </a>
+
+        <p style="text-align: center; color: #999; font-size: 12px">
+          Response within 24 hours
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Learn Portuguese</h3>
+            <p>Your complete guide to mastering Brazilian Portuguese</p>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#verbs">Verbs</a></li>
+              <li><a href="#vocabulary">Vocabulary</a></li>
+              <li><a href="#phrases">Phrases</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="social-links">
+              <a
+                href="https://api.whatsapp.com/send/?phone=5521977297049&text&type=phone_number&app_absent=0"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="https://instagram.com/kaiquebazil"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Learn Portuguese with Kaique. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <button class="theme-toggle" id="themeToggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <button class="back-to-top" id="backToTop">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <a href="https://wa.me/5521977297049" class="whatsapp-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+      // Navigation
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        mobileMenuBtn.innerHTML = navLinks.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close menu when clicking on a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Theme toggle
+      const themeToggle = document.getElementById("themeToggle");
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const icon = themeToggle.querySelector("i");
+        if (document.body.classList.contains("dark-mode")) {
+          icon.classList.replace("fa-moon", "fa-sun");
+          localStorage.setItem("theme", "dark");
+        } else {
+          icon.classList.replace("fa-sun", "fa-moon");
+          localStorage.setItem("theme", "light");
+        }
+      });
+
+      // Check for saved theme preference
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        themeToggle.querySelector("i").classList.replace("fa-moon", "fa-sun");
+      }
+
+      // Scroll progress indicator
+      window.addEventListener("scroll", () => {
+        const scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrollProgress = (scrollTop / scrollHeight) * 100;
+        document.getElementById("progressBar").style.width =
+          scrollProgress + "%";
+
+        // Show/hide back to top button
+        const backToTop = document.getElementById("backToTop");
+        if (scrollTop > 300) {
+          backToTop.classList.add("visible");
+        } else {
+          backToTop.classList.remove("visible");
+        }
+      });
+
+      // Back to top button
+      document.getElementById("backToTop").addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Search functionality
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        if (searchTerm.length < 2) return;
+
+        // Search through all content
+        const elements = document.querySelectorAll(
+          ".verb-card, .category-card, .phrase-item"
+        );
+        elements.forEach((el) => {
+          const content = el.textContent.toLowerCase();
+          if (content.includes(searchTerm)) {
+            el.style.display = "flex";
+            // Highlight matches
+            const regex = new RegExp(searchTerm, "gi");
+            el.innerHTML = el.innerHTML.replace(
+              regex,
+              (match) => `<span class="highlight">${match}</span>`
+            );
+          } else {
+            el.style.display = "none";
+          }
+        });
+      });
+
+      // Phrases accordion
+      document
+        .querySelectorAll(".phrase-category .category-header")
+        .forEach((header) => {
+          header.addEventListener("click", () => {
+            header.parentElement.classList.toggle("active");
+            const icon = header.querySelector("i");
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+          });
+        });
+
+      // Resources tabs
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Remove active class from all buttons and contents
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach((b) => b.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-content")
+            .forEach((c) => c.classList.remove("active"));
+
+          // Add active class to clicked button and corresponding content
+          btn.classList.add("active");
+          const tabId = btn.getAttribute("data-tab");
+          document.getElementById(tabId).classList.add("active");
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            if (navLinks.classList.contains("active")) {
+              navLinks.classList.remove("active");
+              mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+          }
+        });
+      });
+
+      // Audio functionality using Web Speech API
+      function playAudio(text) {
+        if ("speechSynthesis" in window) {
+          // Cancel any ongoing speech
+          speechSynthesis.cancel();
+
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = "pt-BR";
+          utterance.rate = 0.9;
+
+          // Try to find a Brazilian Portuguese voice
+          const voices = speechSynthesis.getVoices();
+          const brazilianVoice = voices.find(
+            (voice) => voice.lang === "pt-BR" || voice.lang === "pt-BR"
+          );
+
+          if (brazilianVoice) {
+            utterance.voice = brazilianVoice;
+          }
+
+          speechSynthesis.speak(utterance);
+        } else {
+          alert("Text-to-speech is not supported in your browser");
+        }
+      }
+
+      // Initialize voices when they become available
+      speechSynthesis.onvoiceschanged = function () {
+        // Voices are now loaded
+      };
+
+      // Initialize audio buttons
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".audio-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const text = this.closest(".verb-card, .phrase-item").querySelector(
+              "h3, strong"
+            ).textContent;
+            playAudio(text);
+          });
+        });
+
+        // Load voices if they're already available
+        if (speechSynthesis.getVoices().length > 0) {
+          speechSynthesis.onvoiceschanged();
+        }
+      });
+
+      // Função para mostrar o modal
+      function showModal() {
+        document.getElementById("languageExchangeModal").style.display = "flex";
+      }
+
+      // Fechar modal
+      document
+        .getElementById("closeModalBtn")
+        .addEventListener("click", function () {
+          document.getElementById("languageExchangeModal").style.display =
+            "none";
+        });
+
+      // Mostrar após 30 segundos
+      setTimeout(showModal, 30000);
+
+      // Mostrar quando o usuário rolar até o final
+      window.addEventListener("scroll", function () {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          showModal();
+          // Remover o event listener para não mostrar múltiplas vezes
+          window.removeEventListener("scroll", this);
+        }
+      });
+    </script>
+  </body>
+</html>
