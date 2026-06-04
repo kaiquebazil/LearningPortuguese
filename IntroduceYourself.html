@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduce Yourself - Learn Portuguese | Personalização</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="img/favicon.svg" type="image/x-icon">
+
+    <style>
+        :root {
+            --bg-color: #fafafa;
+            --text-main: #000000;
+            --text-muted: #6b7280;
+            --text-blue-gray: #64748b;
+            --border-color: #000000;
+            --card-bg: #ffffff;
+            --btn-yellow: #fde047;
+            --btn-blue: #dbeafe;
+            --question-bg: #fef08a;
+            --presentation-bg: #bbf7d0;
+            --shadow-offset: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-area h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .btn-home, .btn-custom {
+            background-color: var(--btn-yellow);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 2px 2px 0px var(--border-color);
+            transition: transform 0.1s, box-shadow 0.1s;
+            margin-left: 8px;
+        }
+
+        .btn-custom {
+            background-color: #a78bfa;
+            box-shadow: 2px 2px 0px #3b0764;
+        }
+
+        .btn-home:active, .btn-custom:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px var(--border-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s ease;
+        }
+
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-container {
+            background-color: var(--card-bg);
+            border: 3px solid var(--border-color);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.2);
+            padding: 0;
+            animation: modalPop 0.2s ease-out;
+        }
+
+        @keyframes modalPop {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background-color: var(--btn-yellow);
+            padding: 20px 24px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.6rem;
+        }
+
+        .close-modal {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            transition: background 0.1s;
+        }
+
+        .close-modal:hover {
+            background-color: #00000020;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group select {
+            padding: 12px 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            background: white;
+            transition: 0.1s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            background-color: #fff7e0;
+            box-shadow: 2px 2px 0px black;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn-save {
+            background-color: #22c55e;
+            border: 2px solid black;
+            padding: 10px 22px;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.05s linear;
+            box-shadow: 2px 2px 0px black;
+        }
+
+        .btn-cancel-modal {
+            background-color: #e2e8f0;
+            border: 2px solid black;
+            padding: 10px 22px;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px black;
+        }
+
+        .btn-save:active, .btn-cancel-modal:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px black;
+        }
+
+        /* Mensagem de dados personalizados */
+        .custom-data-badge {
+            background-color: #fff3bf;
+            border-left: 8px solid #facc15;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 1px solid black;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .reset-data-btn {
+            background: none;
+            border: 1px solid black;
+            border-radius: 40px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: white;
+            transition: 0.05s linear;
+        }
+
+        .reset-data-btn:active {
+            transform: scale(0.96);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+        }
+
+        .page-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .page-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        aside {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .nav-card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-card h4 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 4px;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 8px 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover {
+            background-color: #f3f4f6;
+            border-color: var(--border-color);
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .category-section {
+            scroll-margin-top: 100px;
+        }
+
+        .category-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .questions-box {
+            background-color: var(--question-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            box-shadow: 3px 3px 0px var(--border-color);
+        }
+
+        .questions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .question-line {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .phrase-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .phrase-card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 3px 3px 0px var(--border-color);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .phrase-pt {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .phrase-en {
+            font-size: 0.9rem;
+            color: var(--text-blue-gray);
+        }
+
+        .highlight {
+            color: #2563eb;
+            text-decoration: underline;
+            font-weight: 800;
+        }
+
+        .btn-audio {
+            background-color: var(--btn-blue);
+            border: 1.5px solid var(--border-color);
+            border-radius: 6px;
+            width: 38px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .presentation-box {
+            background-color: var(--presentation-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+        }
+
+        .presentation-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 850px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            aside {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        /* Scrollbar personalizada - WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    margin-block: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #fde047, #a78bfa);
+    border-radius: 10px;
+    border: 1px solid #000000;
+    transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #facc15, #8b5cf6);
+    transform: scale(1.02);
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #a78bfa #f1f1f1;
+}
+
+/* Scrollbar para o modal (se quiser um estilo diferente) */
+.modal-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-container::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #fde047, #a78bfa);
+    border-radius: 10px;
+    border: 1px solid #000000;
+}
+
+/* Scrollbar suave para toda a página */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Opcional: esconder scrollbar em mobile mantendo funcionalidade */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo-area">
+        <i data-lucide="book-open"></i>
+        <h2>Learn Portuguese</h2>
+    </a>
+    <div class="header-actions">
+        <button id="openModalBtn" class="btn-custom">✏️ Edit</button>
+        <a href="index.html" class="btn-home">
+            <i class="fas fa-home"></i> Home
+        </a>
+    </div>
+</header>
+
+<div class="container">
+    <section class="page-header">
+        <h1>Introduce Yourself</h1>
+        <p>Learn to talk about yourself in Portuguese with perfect pronunciation</p>
+    </section>
+
+    <aside>
+        <nav class="nav-card">
+            <h4>Sections</h4>
+            <a href="#nameSection" class="nav-item">Name</a>
+            <a href="#ageSection" class="nav-item">Age</a>
+            <a href="#birthSection" class="nav-item">Birth</a>
+            <a href="#livingWithSection" class="nav-item">Live With</a>
+            <a href="#locationSection" class="nav-item">Location</a>
+            <a href="#maritalSection" class="nav-item">Marital Status</a>
+            <a href="#educationSection" class="nav-item">Education</a>
+            <a href="#workSection" class="nav-item">Work</a>
+            <a href="#hobbiesSection" class="nav-item">Hobbies</a>
+            <a href="#presentationSection" class="nav-item">Presentation</a>
+        </nav>
+    </aside>
+
+    <main class="content-area">
+        <!-- Banner de dados personalizados -->
+        <div id="customDataBanner" style="display: none;" class="custom-data-badge">
+            <span>🌟 <strong>Seus dados pessoais carregados:</strong> <span id="bannerSummary"></span></span>
+            <button id="clearDataBtn" class="reset-data-btn">Limpar meus dados</button>
+        </div>
+
+        <!-- As seções de exemplo continuam (mantidas mas as frases dinâmicas podem ser preenchidas via javascript) -->
+        <section class="category-section" id="nameSection">
+            <h2 class="category-title"><i data-lucide="user"></i> Seu Nome</h2>
+            <div class="questions-box"><h5><i data-lucide="help-circle"></i> Common Questions:</h5><div class="questions-list"><span class="question-line">• What's your name? / Could you tell me your name?</span></div></div>
+            <div class="phrase-list" id="namePhrases"></div>
+        </section>
+        <section class="category-section" id="ageSection">
+            <h2 class="category-title"><i data-lucide="cake"></i> Idade</h2>
+            <div class="questions-box"><h5><i data-lucide="help-circle"></i> Common Questions:</h5><div class="questions-list"><span class="question-line">• How old are you? / What's your age?</span></div></div>
+            <div class="phrase-list" id="agePhrases"></div>
+        </section>
+        <section class="category-section" id="birthSection">
+            <h2 class="category-title"><i data-lucide="calendar"></i> Data de Nascimento</h2>
+            <div class="questions-box"><h5><i data-lucide="help-circle"></i> Common Questions:</h5><div class="questions-list"><span class="question-line">• When is your birthday? / When were you born?</span></div></div>
+            <div class="phrase-list" id="birthPhrases"></div>
+        </section>
+        <section class="category-section" id="livingWithSection">
+            <h2 class="category-title"><i data-lucide="home"></i> Com quem você mora</h2>
+            <div class="phrase-list" id="livingPhrases"></div>
+        </section>
+        <section class="category-section" id="locationSection">
+            <h2 class="category-title"><i data-lucide="map-pin"></i> Localização</h2>
+            <div class="phrase-list" id="locationPhrases"></div>
+        </section>
+        <section class="category-section" id="maritalSection">
+            <h2 class="category-title"><i data-lucide="heart"></i> Estado Civil</h2>
+            <div class="phrase-list" id="maritalPhrases"></div>
+        </section>
+        <section class="category-section" id="educationSection">
+            <h2 class="category-title"><i data-lucide="graduation-cap"></i> Escola e Faculdade</h2>
+            <div class="phrase-list" id="educationPhrases"></div>
+        </section>
+        <section class="category-section" id="workSection">
+            <h2 class="category-title"><i data-lucide="briefcase"></i> Trabalho</h2>
+            <div class="phrase-list" id="workPhrases"></div>
+        </section>
+        <section class="category-section" id="hobbiesSection">
+            <h2 class="category-title"><i data-lucide="smile"></i> Hobbies</h2>
+            <div class="phrase-list" id="hobbiesPhrases"></div>
+        </section>
+
+        <section class="category-section" id="presentationSection">
+            <h2 class="category-title"><i data-lucide="star"></i> Apresentação Completa</h2>
+            <div class="presentation-box">
+                <p class="presentation-text" id="fullIntroductionText">Olá! Meu nome é Kaique. Eu sou de Petrópolis, Brasil. Eu tenho 21 anos, sou solteiro...</p>
+                <div class="audio-controls">
+                    <button class="btn-audio" id="btnPlayFull" style="background-color: #ffffff; padding: 0 20px; width: auto; gap: 8px; font-weight: bold;">
+                        <i data-lucide="play"></i> Ouvir Texto Completo
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- MODAL DE DADOS PESSOAIS -->
+<div id="userModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2>✏️ Seus dados pessoais</h2>
+            <button class="close-modal" id="closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="userDataForm">
+                <div class="form-group"><label>Nome completo</label><input type="text" id="fullName" placeholder="Ex: Kaique Bazil" autocomplete="off"></div>
+                <div class="form-group"><label>Idade</label><input type="number" id="age" placeholder="22"></div>
+                <div class="form-group"><label>Data de Nascimento</label><input type="text" id="birthDate" placeholder="14 de novembro de 2003"></div>
+                <div class="form-group"><label>Mora com</label><input type="text" id="liveWith" placeholder="minha mãe e dois irmãos"></div>
+                <div class="form-group"><label>Cidade / Localização</label><input type="text" id="location" placeholder="Rio de Janeiro"></div>
+                <div class="form-group"><label>Estado Civil</label><select id="maritalStatus"><option value="solteiro(a)">Solteiro(a)</option><option value="casado(a)">Casado(a)</option><option value="namorando">Namorando</option></select></div>
+                <div class="form-group"><label>Educação / Faculdade</label><input type="text" id="education" placeholder="Engenharia de Software"></div>
+                <div class="form-group"><label>Trabalho / Profissão</label><input type="text" id="job" placeholder="entregador de oxigênio medicinal"></div>
+                <div class="form-group"><label>Empresa / Local</label><input type="text" id="company" placeholder="Lukgas"></div>
+                <div class="form-group"><label>Hobbies</label><input type="text" id="hobbies" placeholder="futebol, séries"></div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel-modal" id="cancelModalBtn">Cancelar</button>
+                    <button type="submit" class="btn-save">💾 Salvar & Atualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    // --- Gerenciamento de dados e renderização personalizada ---
+    let userData = {
+        fullName: "Kaique Bazil",
+        age: "21",
+        birthDate: "14 de novembro de 2003",
+        liveWith: "minha família: minha mãe Cristina e dois irmãos",
+        location: "Petrópolis, Brasil",
+        maritalStatus: "solteiro",
+        education: "Engenharia de Software",
+        job: "entregador de oxigênio medicinal",
+        company: "Lukgas",
+        hobbies: "futebol, séries e filmes"
+    };
+
+    const STORAGE_KEY = "learnPortuguese_userData";
+
+    function loadFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if(stored) {
+            try {
+                const parsed = JSON.parse(stored);
+                userData = { ...userData, ...parsed };
+            } catch(e) {}
+        }
+    }
+
+    function saveToStorage() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
+    }
+
+    // Função auxiliar para gerar frases dinâmicas
+    function renderPersonalizedPhrases() {
+        const nome = userData.fullName.split(' ')[0] || "Amigo";
+        const sobrenome = userData.fullName.split(' ').slice(1).join(' ') || "Silva";
+        const idadeNum = userData.age;
+        const idadeTexto = idadeNum + " anos";
+        const idadeExtenso = numberToWords(parseInt(idadeNum));
+        const cidade = userData.location.split(',')[0] || userData.location;
+        const pais = userData.location.includes(',') ? userData.location.split(',')[1]?.trim() || "Brasil" : "Brasil";
+        
+        // Nome
+        document.getElementById("namePhrases").innerHTML = `
+            <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Meu nome é <span class="highlight">${nome}</span>.</span><span class="phrase-en">My name is ${nome}.</span></div><button class="btn-audio" data-speech="Meu nome é ${nome}."><i data-lucide="volume-2"></i></button></div>
+            <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu sou o <span class="highlight">${nome}</span>.</span><span class="phrase-en">I'm ${nome}.</span></div><button class="btn-audio" data-speech="Eu sou o ${nome}."><i data-lucide="volume-2"></i></button></div>
+            <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Meu primeiro nome é <span class="highlight">${nome}</span>.</span><span class="phrase-en">My first name is ${nome}.</span></div><button class="btn-audio" data-speech="Meu primeiro nome é ${nome}."><i data-lucide="volume-2"></i></button></div>
+            <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Meu sobrenome é <span class="highlight">${sobrenome}</span>.</span><span class="phrase-en">My surname is ${sobrenome}.</span></div><button class="btn-audio" data-speech="Meu sobrenome é ${sobrenome}."><i data-lucide="volume-2"></i></button></div>
+        `;
+        // Idade
+        document.getElementById("agePhrases").innerHTML = `
+            <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu tenho <span class="highlight">${idadeNum}</span> anos.</span><span class="phrase-en">I'm ${idadeNum} years old.</span></div><button class="btn-audio" data-speech="Eu tenho ${idadeTexto}."><i data-lucide="volume-2"></i></button></div>
+            <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu estou com <span class="highlight">${idadeNum}</span>.</span><span class="phrase-en">I'm ${idadeNum}.</span></div><button class="btn-audio" data-speech="Eu estou com ${idadeNum}."><i data-lucide="volume-2"></i></button></div>
+        `;
+        // Nascimento
+        document.getElementById("birthPhrases").innerHTML = `
+            <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu nasci em <span class="highlight">${userData.birthDate}</span>.</span><span class="phrase-en">I was born on ${userData.birthDate}.</span></div><button class="btn-audio" data-speech="Eu nasci em ${userData.birthDate}."><i data-lucide="volume-2"></i></button></div>
+            <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Meu aniversário é dia <span class="highlight">${userData.birthDate.split(' de ')[0] || userData.birthDate}</span>.</span><span class="phrase-en">My birthday is ${userData.birthDate}.</span></div><button class="btn-audio" data-speech="Meu aniversário é dia ${userData.birthDate}."><i data-lucide="volume-2"></i></button></div>
+        `;
+        document.getElementById("livingPhrases").innerHTML = `<div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu moro com <span class="highlight">${userData.liveWith}</span>.</span><span class="phrase-en">I live with ${userData.liveWith}.</span></div><button class="btn-audio" data-speech="Eu moro com ${userData.liveWith}."><i data-lucide="volume-2"></i></button></div>`;
+        document.getElementById("locationPhrases").innerHTML = `<div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu moro no <span class="highlight">${cidade}</span>.</span><span class="phrase-en">I live in ${cidade}.</span></div><button class="btn-audio" data-speech="Eu moro no ${cidade}."><i data-lucide="volume-2"></i></button></div>
+        <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu sou do <span class="highlight">${pais}</span>.</span><span class="phrase-en">I'm from ${pais}.</span></div><button class="btn-audio" data-speech="Eu sou do ${pais}."><i data-lucide="volume-2"></i></button></div>`;
+        
+        let maritalText = userData.maritalStatus === "solteiro(a)" ? "solteiro" : (userData.maritalStatus === "casado(a)" ? "casado" : "namorando");
+        document.getElementById("maritalPhrases").innerHTML = `<div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu sou ${maritalText} / ${maritalText}a.</span><span class="phrase-en">I'm ${maritalText}.</span></div><button class="btn-audio" data-speech="Eu sou ${maritalText}."><i data-lucide="volume-2"></i></button></div>`;
+        document.getElementById("educationPhrases").innerHTML = `<div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu faço faculdade de <span class="highlight">${userData.education}</span>.</span><span class="phrase-en">I'm majoring in ${userData.education}.</span></div><button class="btn-audio" data-speech="Eu faço faculdade de ${userData.education}."><i data-lucide="volume-2"></i></button></div>`;
+        document.getElementById("workPhrases").innerHTML = `<div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu trabalho na <span class="highlight">${userData.company}</span>, ${userData.job}.</span><span class="phrase-en">I work at ${userData.company}, ${userData.job}.</span></div><button class="btn-audio" data-speech="Eu trabalho na ${userData.company}, ${userData.job}."><i data-lucide="volume-2"></i></button></div>
+        <div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu sou ${userData.job.includes('entregador') ? 'um entregador' : userData.job}.</span><span class="phrase-en">I'm a ${userData.job}.</span></div><button class="btn-audio" data-speech="Eu sou ${userData.job}."><i data-lucide="volume-2"></i></button></div>`;
+        document.getElementById("hobbiesPhrases").innerHTML = `<div class="phrase-card"><div class="text-content"><span class="phrase-pt">Eu gosto muito de <span class="highlight">${userData.hobbies}</span>.</span><span class="phrase-en">I really like ${userData.hobbies}.</span></div><button class="btn-audio" data-speech="Eu gosto muito de ${userData.hobbies}."><i data-lucide="volume-2"></i></button></div>`;
+        
+        // Texto de apresentação final
+        const finalText = `Olá! Meu nome é ${nome}. Eu sou de ${cidade}, ${pais}. Eu nasci em ${userData.birthDate}. Eu tenho ${idadeNum} anos, sou ${maritalText} e faço faculdade de ${userData.education}. Eu moro com ${userData.liveWith}. No meu tempo livre, eu gosto muito de ${userData.hobbies}. Eu trabalho na ${userData.company} como ${userData.job}.`;
+        document.getElementById("fullIntroductionText").innerText = finalText;
+        
+        // Atualizar summary banner
+        document.getElementById("bannerSummary").innerHTML = `${nome}, ${idadeNum} anos, ${cidade}`;
+        const banner = document.getElementById("customDataBanner");
+        banner.style.display = "flex";
+        
+        // Reatribuir eventos de áudio para todos os novos botões
+        attachAudioEvents();
+    }
+    
+    function numberToWords(n) {
+        const units = ["", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove"];
+        if(n<20) return units[n];
+        return n;
+    }
+    
+    function attachAudioEvents() {
+        document.querySelectorAll('.btn-audio:not(#btnPlayFull)').forEach(btn => {
+            btn.removeEventListener('click', audioHandler);
+            btn.addEventListener('click', audioHandler);
+        });
+        if(window.fullBtnListener) window.fullBtnListener.removeEventListener?.('click', fullAudioHandler);
+        const fullBtn = document.getElementById('btnPlayFull');
+        if(fullBtn) {
+            fullBtn.removeEventListener('click', fullAudioHandler);
+            fullBtn.addEventListener('click', fullAudioHandler);
+            window.fullBtnListener = fullBtn;
+        }
+    }
+    
+    function audioHandler(e) {
+        const btn = e.currentTarget;
+        const text = btn.getAttribute('data-speech');
+        if(text) tts.speak(text, btn);
+    }
+    function fullAudioHandler() {
+        const text = document.getElementById('fullIntroductionText').textContent.trim();
+        const btn = document.getElementById('btnPlayFull');
+        if(btn.classList.contains('playing')) tts.stop();
+        else {
+            btn.innerHTML = '<i data-lucide="square"></i> Parar Áudio';
+            lucide.createIcons();
+            tts.speak(text, btn);
+        }
+    }
+    
+    // TTS 
+    class TextToSpeechSystem {
+        constructor() { this.synth = window.speechSynthesis; this.activeButton = null; }
+        speak(text, button) {
+            if(this.synth.speaking) this.stop();
+            this.currentUtterance = new SpeechSynthesisUtterance(text);
+            this.currentUtterance.lang = 'pt-BR';
+            this.currentUtterance.rate = 0.95;
+            this.activeButton = button;
+            this.activeButton.classList.add('playing');
+            const icon = this.activeButton.querySelector('i');
+            if(icon && this.activeButton.id !== "btnPlayFull") icon.setAttribute('data-lucide', 'square');
+            lucide.createIcons();
+            this.currentUtterance.onend = () => this.resetState();
+            this.currentUtterance.onerror = () => this.resetState();
+            this.synth.speak(this.currentUtterance);
+        }
+        stop() { this.synth.cancel(); this.resetState(); }
+        resetState() {
+            if(this.activeButton) {
+                this.activeButton.classList.remove('playing');
+                if(this.activeButton.id === "btnPlayFull") this.activeButton.innerHTML = '<i data-lucide="play"></i> Ouvir Texto Completo';
+                else {
+                    const icon = this.activeButton.querySelector('i');
+                    if(icon) icon.setAttribute('data-lucide', 'volume-2');
+                }
+                lucide.createIcons();
+                this.activeButton = null;
+            }
+        }
+    }
+    const tts = new TextToSpeechSystem();
+    
+    // Modal e formulário
+    const modal = document.getElementById('userModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtns = [document.getElementById('closeModalBtn'), document.getElementById('cancelModalBtn')];
+    function openModal() { modal.classList.add('active'); fillFormFromData(); }
+    function closeModal() { modal.classList.remove('active'); }
+    openBtn.addEventListener('click', openModal);
+    closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+    
+    function fillFormFromData() {
+        document.getElementById('fullName').value = userData.fullName;
+        document.getElementById('age').value = userData.age;
+        document.getElementById('birthDate').value = userData.birthDate;
+        document.getElementById('liveWith').value = userData.liveWith;
+        document.getElementById('location').value = userData.location;
+        document.getElementById('maritalStatus').value = userData.maritalStatus;
+        document.getElementById('education').value = userData.education;
+        document.getElementById('job').value = userData.job;
+        document.getElementById('company').value = userData.company;
+        document.getElementById('hobbies').value = userData.hobbies;
+    }
+    document.getElementById('userDataForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        userData = {
+            fullName: document.getElementById('fullName').value.trim() || "Amigo",
+            age: document.getElementById('age').value || "21",
+            birthDate: document.getElementById('birthDate').value || "14 de novembro",
+            liveWith: document.getElementById('liveWith').value || "família",
+            location: document.getElementById('location').value || "Brasil",
+            maritalStatus: document.getElementById('maritalStatus').value,
+            education: document.getElementById('education').value || "Universidade",
+            job: document.getElementById('job').value || "profissional",
+            company: document.getElementById('company').value || "empresa",
+            hobbies: document.getElementById('hobbies').value || "atividades"
+        };
+        saveToStorage();
+        renderPersonalizedPhrases();
+        closeModal();
+        lucide.createIcons();
+    });
+    document.getElementById('clearDataBtn').addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+    });
+    
+    // Inicialização
+    loadFromStorage();
+    renderPersonalizedPhrases();
+    lucide.createIcons();
+    attachAudioEvents();
+    window.addEventListener("beforeunload", () => tts.stop());
+</script>
+</body>
+</html>

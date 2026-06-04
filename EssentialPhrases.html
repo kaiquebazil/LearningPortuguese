@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Essential Phrases + Audio | Learn Portuguese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="img/favicon.svg" type="image/x-icon">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fefcf5;
+            font-family: 'Inter', sans-serif;
+            color: #1e1e2a;
+            line-height: 1.4;
+        }
+
+        /* navbar / header */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            background: #ffffff;
+            border-bottom: 2px solid #000000;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .logo i {
+            font-size: 1.7rem;
+        }
+
+        .home-btn {
+            background: #fde047;
+            border: 1.5px solid #000;
+            border-radius: 40px;
+            padding: 8px 22px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            color: #000;
+            box-shadow: 2px 2px 0 #000;
+            transition: all 0.1s ease;
+            display: inline-block;
+        }
+
+        .home-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+
+        /* main container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px 70px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: -0.5px;
+            font-weight: 700;
+        }
+
+        .page-title p {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-top: 6px;
+        }
+
+        /* search bar */
+        .search-wrapper {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 2px solid #000;
+            border-radius: 60px;
+            padding: 6px 6px 6px 20px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 3px 3px 0 #000;
+        }
+        .search-box i {
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 12px 12px;
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+        .clear-search {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0 12px;
+            color: #4b5563;
+        }
+        .clear-search:hover {
+            color: #000;
+        }
+
+        /* categories (toggle accordion) */
+        .phrases-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .phrase-category {
+            background: #ffffff;
+            border: 2px solid #000;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.05);
+            transition: all 0.15s;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 24px;
+            background: #faf9f5;
+            cursor: pointer;
+            border-bottom: 1px solid #e2e2e0;
+            transition: background 0.2s;
+        }
+        .category-header:hover {
+            background: #f3f2ee;
+        }
+        .category-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .category-header h3 i {
+            color: #e67e22;
+            width: 28px;
+            font-size: 1.3rem;
+        }
+        .chevron-icon {
+            font-size: 1.3rem;
+            transition: transform 0.25s ease;
+            color: #2c3e4e;
+        }
+        .phrase-list {
+            display: none;
+            padding: 16px 20px;
+            background: white;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px solid #f0efea;
+        }
+        .phrase-list.open {
+            display: flex;
+        }
+
+        /* phrase item card */
+        .phrase-item {
+            background: #fefef9;
+            border: 1px solid #e9e8e3;
+            border-radius: 18px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.1s;
+            gap: 12px;
+        }
+        .phrase-text {
+            flex: 1;
+        }
+        .phrase-text p {
+            margin: 4px 0;
+        }
+        .phrase-text p strong {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        .phrase-text p:first-child {
+            font-weight: 600;
+            font-size: 1.02rem;
+        }
+        .phrase-text p:last-child {
+            font-size: 0.85rem;
+            color: #5b6e8c;
+        }
+        .audio-btn {
+            background: #ccf0c3;
+            border: 1.5px solid #1e1e2a;
+            border-radius: 40px;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: #1e2a2e;
+            transition: 0.1s linear;
+            flex-shrink: 0;
+            box-shadow: 2px 2px 0 #000;
+        }
+        .audio-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+        .audio-btn:hover {
+            background: #b4e09e;
+        }
+
+        /* highlight for search */
+        .highlight {
+            background-color: #fdee9f;
+            border-radius: 6px;
+            padding: 0 2px;
+            font-weight: 600;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 48px 20px;
+            background: #fff9ef;
+            border-radius: 36px;
+            border: 1px solid #ffecb3;
+            font-size: 1.1rem;
+            color: #5a4a2e;
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding: 24px 16px;
+            }
+            .category-header h3 {
+                font-size: 1rem;
+            }
+            .phrase-item {
+                flex-wrap: wrap;
+            }
+            .audio-btn {
+                width: 38px;
+                height: 38px;
+            }
+            .page-title h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">
+            <i class="fas fa-book-open"></i>
+            <span>Learn Portuguese</span>
+        </a>
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i> Home
+        </a>
+    </div>
+</header>
+
+<main class="container">
+    <div class="page-title">
+        <h1>📖 Essential Phrases</h1>
+        <p>Brazilian Portuguese • real expressions • audio included</p>
+    </div>
+
+    <!-- search bar -->
+    <div class="search-wrapper">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Buscar frase em português ou inglês...">
+            <button class="clear-search" id="clearSearchBtn" aria-label="Limpar busca"><i class="fas fa-times-circle"></i></button>
+        </div>
+    </div>
+
+    <div class="phrases-accordion" id="accordionRoot"></div>
+</main>
+
+<script>
+    // ----------------------------- DADOS COMPLETOS (based on provided HTML) -----------------------------
+    const categoriesData = [
+        { name: "Cumprimentos e Introduções | Greetings", icon: "fa-handshake", 
+          phrases: [
+            { pt: "Oi, como você tá?", en: "Hi, how are you? / Hey, how are you doing?" },
+            { pt: "Opa, como vai?", en: "Hey, how's it going? / What's up? (more informal)" },
+            { pt: "E aí, como cê tá?", en: "What's up? / How are you doing? (very informal)" },
+            { pt: "Qual é o seu nome?", en: "What's your name?" },
+            { pt: "Como você se chama?", en: "What's your name? (formal)" },
+            { pt: "Meu nome é [seu nome].", en: "My name is [your name]." },
+            { pt: "Eu sou o/a [seu nome].", en: "I'm [your name]." },
+            { pt: "Eu tenho [sua idade].", en: "I'm [your age] years old." },
+            { pt: "Prazer em te conhecer.", en: "Nice to meet you." },
+            { pt: "É um prazer.", en: "It's a pleasure." },
+            { pt: "Bom dia.", en: "Good morning." },
+            { pt: "'Dia.", en: "Morning. (informal)" },
+            { pt: "Boa tarde.", en: "Good afternoon." },
+            { pt: "Boa noite.", en: "Good evening (arriving) / Good night (leaving)." },
+            { pt: "Tenha uma boa noite.", en: "Have a good night." },
+            { pt: "Bom te ver de novo.", en: "Good to see you again." }
+        ]},
+        { name: "Conversas Simples | Simple Conversation", icon: "fa-comment-dots",
+          phrases: [
+            { pt: "Como você tá?", en: "How are you? / How are you doing?" },
+            { pt: "Como vai?", en: "How's it going? / How are things?" },
+            { pt: "Que bom te ver!", en: "So good to see you! / Nice to see you!" },
+            { pt: "Quantos anos você tem?", en: "How old are you?" },
+            { pt: "Que horas são?", en: "What time is it?" },
+            { pt: "Eu sou de/do/da [seu país]", en: "I'm from [your country]." },
+            { pt: "Você é de onde?", en: "Where are you from?" },
+            { pt: "Você trabalha com o que?", en: "What do you do for a living?" },
+            { pt: "Você trabalha aonde?", en: "Where do you work?" },
+            { pt: "Como vai o trabalho?", en: "How's work?" },
+            { pt: "Você tem filhos?", en: "Do you have children?" }
+        ]},
+        { name: "Educação e Cortesia | Courtesy", icon: "fa-user-friends",
+          phrases: [
+            { pt: "Dá licença.", en: "Excuse me." },
+            { pt: "Por favor.", en: "Please." },
+            { pt: "Só um segundo.", en: "Just a second. / One moment." },
+            { pt: "Como?", en: "Pardon? / Excuse me? / What was that?" },
+            { pt: "Obrigado(a).", en: "Thank you." },
+            { pt: "Muito obrigado(a).", en: "Thank you very much. / Thanks a lot." },
+            { pt: "Brigadão!", en: "Thanks! / Thanks a bunch! (informal)" },
+            { pt: "Muitíssimo obrigado(a)! / Valeu demais!", en: "Thank you so much! / Thanks a ton! (informal)" },
+            { pt: "De nada.", en: "You're welcome. / No problem." },
+            { pt: "Sem problema! / Não se preocupa!", en: "No problem! / Don't worry about it!" },
+            { pt: "Me desculpa. / Foi mal.", en: "I'm sorry. / My bad. (informal)" },
+            { pt: "Você poderia repetir, por favor?", en: "Could you repeat that, please?" },
+            { pt: "Você pode falar mais devagar, por favor?", en: "Could you speak more slowly, please?" }
+        ]},
+        { name: "Aprendizagem de Idiomas | Language Learning", icon: "fa-graduation-cap",
+          phrases: [
+            { pt: "Eu tô aprendendo (idioma) agora.", en: "I'm learning (language) now." },
+            { pt: "Eu comecei a aprendê-lo [tempo] atrás.", en: "I started learning it [time] ago." },
+            { pt: "Esqueci.", en: "I forgot." },
+            { pt: "Eu esqueci a palavra.", en: "I forgot the word." },
+            { pt: "Eu esqueci como se diz isso.", en: "I forgot how to say that." },
+            { pt: "Como se diz [palavra]?", en: "How do you say [word]?" },
+            { pt: "Qual o significado de [palavra]?", en: "What's the meaning of [word]?" },
+            { pt: "O que isso significa?", en: "What does this mean?" },
+            { pt: "Quando se usa isso?", en: "When do you use this?" },
+            { pt: "Tá certo se eu disser [frase]?", en: "Is it correct if I say [phrase]?" },
+            { pt: "O que você acha do meu (idioma)? Seja sincero(a).", en: "What do you think of my (language)? Be honest." },
+            { pt: "Você tem alguma dica?", en: "Do you have any tips?" }
+        ]},
+        { name: "Falando sobre Preferências | Speak Preferences", icon: "fa-heart",
+          phrases: [
+            { pt: "Eu gosto de [algo/verbo]", en: "I like [something/verb-ing]." },
+            { pt: "Eu não gosto de [algo/verbo]", en: "I don't like [something/verb-ing]." },
+            { pt: "Você gosta de [série/filme/música/artista]?", en: "Do you like [series/movie/music/artist]?" },
+            { pt: "Cara, eu amo [algo/verbo]!", en: "Man, I love [something/verb-ing]!" },
+            { pt: "Você tem um(a) [artista/livro] favorito(a)?", en: "Do you have a favorite [artist/book]?" },
+            { pt: "Você tem algum hobby?", en: "Do you have any hobbies?" },
+            { pt: "Qual é o seu tipo de comida favorito?", en: "What's your favorite type of food?" },
+            { pt: "Você pode me recomendar um filme bom?", en: "Can you recommend a good movie?" },
+            { pt: "Qual é o seu esporte favorito?", en: "What's your favorite sport?" },
+            { pt: "Qual é o seu animal favorito?", en: "What's your favorite animal?" },
+            { pt: "Eu sou torcedor do/da ou Eu torço pro/pra [time].", en: "I'm a fan of [sports team]." }
+        ]},
+        { name: "Informações Pessoais | Personal Information", icon: "fa-user",
+          phrases: [
+            { pt: "Você tem Instagram / Facebook / WhatsApp etc.?", en: "Do you have Instagram / Facebook / WhatsApp, etc.?" },
+            { pt: "Qual é o seu número?", en: "What's your number?" },
+            { pt: "Você mora aonde?", en: "Where do you live?" },
+            { pt: "Há quanto tempo você está aprendendo [idioma]?", en: "How long have you been learning [language]?" },
+            { pt: "Me fala da sua família.", en: "Tell me about your family." },
+            { pt: "Você tem irmãos?", en: "Do you have any siblings?" }
+        ]},
+        { name: "Pedindo Ajuda | Asking for help", icon: "fa-hands-helping",
+          phrases: [
+            { pt: "Você pode me ajudar?", en: "Can you help me?" },
+            { pt: "Preciso de ajuda.", en: "I need help." },
+            { pt: "Estou perdido(a).", en: "I'm lost." },
+            { pt: "Preciso de um médico.", en: "I need a doctor." },
+            { pt: "Eu preciso de umas direções.", en: "I need some directions." },
+            { pt: "Onde fica a estação de trem mais próxima?", en: "Where's the nearest train station?" },
+            { pt: "Onde fica a estação de metrô?", en: "Where's the subway/metro station?" }
+        ]},
+        { name: "Viagem e Direções | Travel and Directions", icon: "fa-map-marked-alt",
+          phrases: [
+            { pt: "Eu amo viajar.", en: "I love to travel." },
+            { pt: "Como eu chego em [lugar]?", en: "How do I get to [place]?" },
+            { pt: "Qual é a melhor maneira de chegar lá?", en: "What's the best way to get there?" },
+            { pt: "Onde fica o [transporte] mais próximo?", en: "Where's the nearest [transportation]?" },
+            { pt: "Que horas o [lugar] fecha?", en: "What time does [place] close?" },
+            { pt: "Onde posso encontrar um táxi?", en: "Where can I find a taxi?" },
+            { pt: "Como eu chego ao aeroporto?", en: "How do I get to the airport?" },
+            { pt: "Onde fica o ponto de ônibus mais próximo?", en: "Where's the nearest bus stop?" }
+        ]},
+        { name: "Compras e Serviços | Shopping and Services", icon: "fa-shopping-cart",
+          phrases: [
+            { pt: "Quanto custa a entrada?", en: "How much is the entrance fee?" },
+            { pt: "Quanto isso custa?", en: "How much does this cost?" },
+            { pt: "Posso experimentar aquilo? / Posso experimentar isso?", en: "Can I try that on?" },
+            { pt: "Onde posso comprar [item]?", en: "Where can I buy [item]?" },
+            { pt: "Eu tenho uma reserva.", en: "I have a reservation." },
+            { pt: "Posso ter um copo d’água?", en: "Can I have a glass of water?" },
+            { pt: "Onde posso encontrar um banco?", en: "Where can I find a bank?" },
+            { pt: "Qual é a taxa de câmbio?", en: "What's the exchange rate?" }
+        ]},
+        { name: "Comendo Fora | Eating Out", icon: "fa-utensils",
+          phrases: [
+            { pt: "O que tem no menu?", en: "What's on the menu?" },
+            { pt: "Posso ver o menu de sobremesas?", en: "Can I see the dessert menu?" },
+            { pt: "Tô com fome.", en: "I'm hungry." },
+            { pt: "Tô com sede.", en: "I'm thirsty." },
+            { pt: "Você pode recomendar um bom restaurante?", en: "Can you recommend a good restaurant?" },
+            { pt: "Posso receber a conta, por favor?", en: "Can I have the check, please?" }
+        ]},
+        { name: "Saúde e Bem-Estar | Health and Well-being", icon: "fa-heartbeat",
+          phrases: [
+            { pt: "Eu tô resfriado(a).", en: "I have a cold." },
+            { pt: "Eu tô com dor de cabeça.", en: "I have a headache." },
+            { pt: "Eu preciso de um tempo / um descanso / uma pausa.", en: "I need some time / a rest / a break." },
+            { pt: "Onde fica a farmácia mais próxima?", en: "Where's the nearest pharmacy?" },
+            { pt: "Eu tô melhor agora, obrigado(a).", en: "I'm feeling better now, thank you." },
+            { pt: "Onde posso achar um médico?", en: "Where can I find a doctor?" },
+            { pt: "Não tô me sentindo muito bem.", en: "I'm not feeling very well." },
+            { pt: "Tem um hospital por perto?", en: "Is there a hospital nearby?" }
+        ]},
+        { name: "Diversos | Several", icon: "fa-ellipsis-h",
+          phrases: [
+            { pt: "Eu tenho uma pergunta.", en: "I have a question." },
+            { pt: "Eu não sei.", en: "I don't know." },
+            { pt: "Não tenho certeza.", en: "I'm not sure." },
+            { pt: "Eu não sabia disso.", en: "I didn't know that." },
+            { pt: "Ah é? / Sério?", en: "Oh really? / Really?" },
+            { pt: "Nossa, que doideira…", en: "Wow, that's crazy..." },
+            { pt: "Qual é a diferença entre [palavra] e [palavra similar]?", en: "What's the difference between [word] and [similar word]?" },
+            { pt: "Tô de férias.", en: "I'm on vacation." },
+            { pt: "Eu sou estudante.", en: "I'm a student." },
+            { pt: "Eu sou professor(a).", en: "I'm a teacher." },
+            { pt: "Qual é o seu feriado favorito?", en: "What's your favorite holiday?" },
+            { pt: "Você pode me mostrar no mapa?", en: "Can you show me on the map?" },
+            { pt: "Qual é o seu lugar favorito em/na/no [cidade/estado/país]?", en: "What's your favorite place in [city]?" },
+            { pt: "Posso tirar uma foto?", en: "Can I take a picture?" }
+        ]},
+        { name: "Despedida | Farewell", icon: "fa-sign-out-alt",
+          phrases: [
+            { pt: "Beleza, te vejo depois!", en: "Alright, see you later!" },
+            { pt: "Te vejo em breve.", en: "See you soon." },
+            { pt: "Foi ótimo te conhecer!", en: "It was great meeting you!" },
+            { pt: "Tenha um bom dia.", en: "Have a good day." },
+            { pt: "Tenha um bom fim de semana. / Aproveita o fim de semana.", en: "Have a good weekend. / Enjoy your weekend." },
+            { pt: "Aproveita lá no(a) [evento]!", en: "Have fun at the [event]!" },
+            { pt: "Se cuida.", en: "Take care." },
+            { pt: "Me manda mensagem quando chegar/estiver em casa.", en: "Text me when you get home." }
+        ]}
+    ];
+
+    // audio helper (speech synthesis)
+    function playAudioPhrase(text) {
+        if (!text) return;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'pt-BR';
+        utterance.rate = 0.9;
+        window.speechSynthesis.cancel(); // evitar sobreposição
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // função para criar HTML com highlight
+    function highlightText(text, query) {
+        if (!query || query.trim() === "") return text;
+        const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+        return text.replace(regex, `<span class="highlight">$1</span>`);
+    }
+
+    function escapeRegex(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    let currentSearch = "";
+
+    function renderPhrases(searchTerm = "") {
+        currentSearch = searchTerm.trim().toLowerCase();
+        const container = document.getElementById("accordionRoot");
+        if (!container) return;
+        container.innerHTML = "";
+
+        let hasAnyVisible = false;
+
+        categoriesData.forEach((category, idx) => {
+            // filtrar frases
+            let filteredPhrases = category.phrases;
+            let categoryMatches = false;
+            if (currentSearch !== "") {
+                filteredPhrases = category.phrases.filter(p => 
+                    p.pt.toLowerCase().includes(currentSearch) || 
+                    p.en.toLowerCase().includes(currentSearch)
+                );
+                if (filteredPhrases.length > 0) categoryMatches = true;
+            } else {
+                categoryMatches = true;
+            }
+
+            if (currentSearch !== "" && !categoryMatches) return;
+            hasAnyVisible = true;
+
+            const catDiv = document.createElement("div");
+            catDiv.className = "phrase-category";
+            const catId = `cat-${idx}`;
+
+            // header
+            const header = document.createElement("div");
+            header.className = "category-header";
+            header.innerHTML = `
+                <h3><i class="fas ${category.icon}"></i> ${category.name}</h3>
+                <i class="fas fa-chevron-down chevron-icon"></i>
+            `;
+            const phraseListDiv = document.createElement("div");
+            phraseListDiv.className = "phrase-list";
+
+            filteredPhrases.forEach(phrase => {
+                const item = document.createElement("div");
+                item.className = "phrase-item";
+                const highlightedPt = currentSearch ? highlightText(phrase.pt, currentSearch) : phrase.pt;
+                const highlightedEn = currentSearch ? highlightText(phrase.en, currentSearch) : phrase.en;
+                item.innerHTML = `
+                    <div class="phrase-text">
+                        <p><strong>${highlightedPt}</strong></p>
+                        <p>${highlightedEn}</p>
+                    </div>
+                    <button class="audio-btn" aria-label="Ouvir pronúncia"><i class="fas fa-volume-up"></i></button>
+                `;
+                const audioBtn = item.querySelector(".audio-btn");
+                audioBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    playAudioPhrase(phrase.pt);
+                });
+                phraseListDiv.appendChild(item);
+            });
+
+            // toggle logic
+            let isOpen = (currentSearch !== ""); // se busca ativa, abrir automaticamente
+            if (currentSearch !== "") {
+                phraseListDiv.classList.add("open");
+            }
+            header.addEventListener("click", () => {
+                phraseListDiv.classList.toggle("open");
+                const icon = header.querySelector(".chevron-icon");
+                if (phraseListDiv.classList.contains("open")) {
+                    icon.style.transform = "rotate(180deg)";
+                } else {
+                    icon.style.transform = "rotate(0deg)";
+                }
+            });
+            const icon = header.querySelector(".chevron-icon");
+            if (phraseListDiv.classList.contains("open")) icon.style.transform = "rotate(180deg)";
+            catDiv.appendChild(header);
+            catDiv.appendChild(phraseListDiv);
+            container.appendChild(catDiv);
+        });
+
+        if (!hasAnyVisible && currentSearch !== "") {
+            container.innerHTML = `<div class="no-results"><i class="fas fa-search"></i> Nenhuma frase encontrada para “${escapeHtml(currentSearch)}”. Tente outra palavra.</div>`;
+        }
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // Eventos e inicialização
+    document.addEventListener("DOMContentLoaded", () => {
+        renderPhrases("");
+        const searchInput = document.getElementById("searchInput");
+        const clearBtn = document.getElementById("clearSearchBtn");
+        if (searchInput) {
+            searchInput.addEventListener("input", (e) => {
+                renderPhrases(e.target.value);
+            });
+        }
+        if (clearBtn) {
+            clearBtn.addEventListener("click", () => {
+                if (searchInput) searchInput.value = "";
+                renderPhrases("");
+            });
+        }
+    });
+</script>
+</body>
+</html>

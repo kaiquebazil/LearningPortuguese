@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn With ChatGPT - Learn Portuguese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fafafa;
+            --text-main: #000000;
+            --text-muted: #6b7280;
+            --border-color: #000000;
+            --card-bg: #ffffff;
+            --btn-yellow: #fde047;
+            --banner-green: #bbf7d0;
+            --tag-purple-bg: #f3e8ff;
+            --tag-purple-text: #6b21a8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        header {
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-area h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .btn-home {
+            background-color: var(--btn-yellow);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 20px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 2px 2px 0px var(--border-color);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .btn-home:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px var(--border-color);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Header Section */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Prompts Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* Prompt Card */
+        .prompt-card {
+            background-color: var(--card-bg);
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tag {
+            background-color: var(--tag-purple-bg);
+            color: var(--tag-purple-text);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .btn-copy {
+            background: transparent;
+            border: 1.5px solid var(--border-color);
+            border-radius: 6px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: background-color 0.2s;
+        }
+
+        .btn-copy:hover {
+            background-color: #f1f5f9;
+        }
+
+        .btn-copy i {
+            width: 16px;
+            height: 16px;
+        }
+
+        .card-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .card-prompt {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Info Banner */
+        .info-banner {
+            background-color: var(--banner-green);
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .info-banner p {
+            font-size: 1rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .info-banner strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            header {
+                padding: 16px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-area">
+            <i data-lucide="book-open"></i>
+            <h2>Learn Portuguese</h2>
+        </a>
+        <a href="index.html" class="btn-home">Home</a>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Learn With ChatGPT</h1>
+            <p>Use these prompts to practice Portuguese with AI</p>
+        </section>
+
+        <section class="grid">
+            <article class="prompt-card">
+                <div class="card-top">
+                    <span class="tag">Beginner</span>
+                    <button class="btn-copy" aria-label="Copy prompt" data-prompt="Teach me Portuguese from zero.">
+                        <i data-lucide="copy"></i>
+                    </button>
+                </div>
+                <h3 class="card-title">Teach me Portuguese from zero</h3>
+                <p class="card-prompt">"Teach me Portuguese from zero."</p>
+            </article>
+
+            <article class="prompt-card">
+                <div class="card-top">
+                    <span class="tag">Vocabulary</span>
+                    <button class="btn-copy" aria-label="Copy prompt" data-prompt="Teach me 20 useful Portuguese words.">
+                        <i data-lucide="copy"></i>
+                    </button>
+                </div>
+                <h3 class="card-title">Teach me 20 useful Portuguese words</h3>
+                <p class="card-prompt">"Teach me 20 useful Portuguese words."</p>
+            </article>
+
+            <article class="prompt-card">
+                <div class="card-top">
+                    <span class="tag">Conversation</span>
+                    <button class="btn-copy" aria-label="Copy prompt" data-prompt="Talk to me like a Brazilian friend.">
+                        <i data-lucide="copy"></i>
+                    </button>
+                </div>
+                <h3 class="card-title">Talk to me like a Brazilian friend</h3>
+                <p class="card-prompt">"Talk to me like a Brazilian friend."</p>
+            </article>
+
+            <article class="prompt-card">
+                <div class="card-top">
+                    <span class="tag">Correction</span>
+                    <button class="btn-copy" aria-label="Copy prompt" data-prompt="Correct my Portuguese mistakes.">
+                        <i data-lucide="copy"></i>
+                    </button>
+                </div>
+                <h3 class="card-title">Correct my Portuguese mistakes</h3>
+                <p class="card-prompt">"Correct my Portuguese mistakes."</p>
+            </article>
+
+            <article class="prompt-card">
+                <div class="card-top">
+                    <span class="tag">Grammar</span>
+                    <button class="btn-copy" aria-label="Copy prompt" data-prompt="Explain Portuguese verb conjugations.">
+                        <i data-lucide="copy"></i>
+                    </button>
+                </div>
+                <h3 class="card-title">Explain Portuguese verb conjugations</h3>
+                <p class="card-prompt">"Explain Portuguese verb conjugations."</p>
+            </article>
+
+            <article class="prompt-card">
+                <div class="card-top">
+                    <span class="tag">Practice</span>
+                    <button class="btn-copy" aria-label="Copy prompt" data-prompt="Create a conversation scenario for practicing Portuguese.">
+                        <i data-lucide="copy"></i>
+                    </button>
+                </div>
+                <h3 class="card-title">Create a conversation scenario</h3>
+                <p class="card-prompt">"Create a conversation scenario for practicing Portuguese."</p>
+            </article>
+        </section>
+
+        <section class="info-banner">
+            <p>
+                <strong>How to use:</strong>
+                Copy any prompt above and paste it into ChatGPT to start practicing your Portuguese!
+            </p>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Inicializa os ícones
+        lucide.createIcons();
+
+        // Adiciona funcionalidade aos botões de copiar
+        document.querySelectorAll('.btn-copy').forEach(button => {
+            button.addEventListener('click', () => {
+                const promptText = button.getAttribute('data-prompt');
+                
+                // Copia para a área de transferência
+                navigator.clipboard.writeText(promptText).then(() => {
+                    // Feedback visual temporário (muda o ícone para check)
+                    const iconElement = button.querySelector('i');
+                    const originalIcon = iconElement.getAttribute('data-lucide');
+                    
+                    iconElement.setAttribute('data-lucide', 'check');
+                    lucide.createIcons();
+                    
+                    setTimeout(() => {
+                        iconElement.setAttribute('data-lucide', originalIcon);
+                        lucide.createIcons();
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

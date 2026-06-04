@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Fluent Portuguese | High Frequency Vocabulary & Verbs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #fefdf8;
+            --surface: #ffffff;
+            --border-dark: #1e1e2a;
+            --text-primary: #1a1a2c;
+            --text-secondary: #5b5b6e;
+            --accent-yellow: #facc15;
+            --accent-blue-light: #e0f2fe;
+            --accent-blue: #38bdf8;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-card: 6px 6px 0px #1e1e2a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+
+
+       /* Navbar */
+        header {
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-area h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .btn-home {
+            background-color: var(--btn-yellow);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 20px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 2px 2px 0px var(--border-color);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .btn-home:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px var(--border-color);
+        }
+
+
+        .btn-home {
+            background: var(--accent-yellow);
+            border: 2px solid var(--border-dark);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-primary);
+            box-shadow: 3px 3px 0 var(--border-dark);
+            transition: 0.1s linear;
+            font-size: 0.9rem;
+        }
+
+        .btn-home:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--border-dark);
+        }
+
+        main {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* headers */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* category filter pills */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 2rem;
+            justify-content: center;
+            border-bottom: 1px solid #e9e9ef;
+            padding-bottom: 1rem;
+        }
+
+        .filter-pill {
+            background: transparent;
+            border: 1.5px solid var(--border-dark);
+            border-radius: 60px;
+            padding: 0.5rem 1.4rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-primary);
+        }
+
+        .filter-pill.active, .filter-pill:hover {
+            background: var(--accent-yellow);
+            border-color: var(--border-dark);
+            box-shadow: 2px 2px 0 var(--border-dark);
+        }
+
+        /* vocabulary + verbs unified grid style */
+        .vocab-grid, .verbs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 1.5rem;
+        }
+
+        /* unified card design */
+        .card-item {
+            background: var(--surface);
+            border: 2px solid var(--border-dark);
+            border-radius: 20px;
+            padding: 1.2rem;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.1s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .portuguese-word {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #111;
+        }
+
+        .badge-category {
+            font-size: 0.7rem;
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-weight: 500;
+            border: 1px solid #ddd;
+            color: #2c3e66;
+        }
+
+        .translation {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin: 8px 0 12px 0;
+            font-size: 0.95rem;
+            border-left: 3px solid var(--accent-yellow);
+            padding-left: 10px;
+        }
+
+        .example-area {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .example-pt {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .example-en {
+            font-size: 0.8rem;
+            color: #5b6e8c;
+            margin-top: 5px;
+        }
+
+        .audio-button {
+            background: var(--accent-blue-light);
+            border: 1.5px solid var(--border-dark);
+            border-radius: 40px;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.1s;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .audio-button:hover {
+            background: #bfdbfe;
+            transform: scale(0.96);
+        }
+
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            margin: 2rem 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 8px solid var(--accent-yellow);
+            padding-left: 18px;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border-color: #eee;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #5b5b6e;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 680px) {
+            .hero h1 { font-size: 2.2rem; }
+            .navbar { padding: 1rem; }
+            .vocab-grid, .verbs-grid { grid-template-columns: 1fr; }
+        }
+
+        .hidden-item {
+            display: none;
+        }
+        /* Audio example button style */
+.audio-example-btn {
+    background: var(--accent-blue-light);
+    border: 1.5px solid var(--border-dark);
+    border-radius: 40px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.1s;
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.audio-example-btn:hover {
+    background: #bfdbfe;
+    transform: scale(0.97);
+}
+
+.card-item .example-area {
+    background: #f8fafc;
+    border-radius: 14px;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #e2e8f0;
+}
+
+.audio-button {
+    background: var(--accent-blue-light);
+    border: 1.5px solid var(--border-dark);
+    border-radius: 40px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.1s;
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.audio-button:hover {
+    background: #bfdbfe;
+    transform: scale(0.97);
+}
+
+.audio-example-btn {
+    background: #e0f2fe;
+    border: 1.5px solid #1e1e2a;
+    border-radius: 40px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.1s;
+    color: #1a1a2c;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.audio-example-btn:hover {
+    background: #facc15;
+    transform: scale(0.98);
+}
+
+.audio-example-btn i {
+    font-size: 0.9rem;
+}
+    </style>
+</head>
+<body>
+
+<header>
+        <a href="index.html" class="logo-area">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" aria-hidden="true" class="lucide lucide-book-open"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+            <h2>Learn Portuguese</h2>
+        </a>
+         <a href="index.html" class="btn-home">
+            <i class="fas fa-home"></i> Home
+        </a>
+</header>
+
+
+<main>
+    <div class="hero">
+        <h1>📖 High Frequency Vocabulary</h1>
+        <p>Essential words + most common verbs | Audio & real examples</p>
+    </div>
+
+    <!-- FILTER SECTION -->
+    <div class="filter-bar" id="filterContainer">
+        <button class="filter-pill active" data-filter="all">📚 All</button>
+        <button class="filter-pill" data-filter="verb">⚡ Verbs</button>
+        <button class="filter-pill" data-filter="greetings">💬 Greetings</button>
+        <button class="filter-pill" data-filter="people">👥 People</button>
+        <button class="filter-pill" data-filter="basics">✨ Basics</button>
+        <button class="filter-pill" data-filter="places">🏠 Places</button>
+        <button class="filter-pill" data-filter="nature">🌿 Nature</button>
+        <button class="filter-pill" data-filter="emotions">😊 Emotions</button>
+        <button class="filter-pill" data-filter="daily">⏳ Daily life</button>
+    </div>
+
+    <!-- DYNAMIC CONTENT CONTAINER -->
+    <div id="dynamicContentContainer"></div>
+</main>
+
+<footer>
+    <i class="fas fa-headphones"></i> Click any audio button to hear pronunciation | Master Portuguese with confidence
+</footer>
+
+<script>
+    // ----------------------------- DATA MODEL ---------------------------------
+const vocabularyItems = [
+    // Greetings / basics (core vocabulary)
+    { id: "voc1", word: "Oi", translation: "Hi / Hello", examplePt: "Oi, tudo bem?", exampleEn: "Hi, how are you?", category: "greetings", audioText: "Oi", audioExample: "Oi, tudo bem?", type: "vocab" },
+    { id: "voc2", word: "Olá", translation: "Hello", examplePt: "Olá, prazer em conhecer!", exampleEn: "Hello, nice to meet you!", category: "greetings", audioText: "Olá", audioExample: "Olá, prazer em conhecer", type: "vocab" },
+    { id: "voc3", word: "Tchau", translation: "Bye / Goodbye", examplePt: "Tchau, até amanhã!", exampleEn: "Bye, see you tomorrow!", category: "greetings", audioText: "Tchau", audioExample: "Tchau, até amanhã", type: "vocab" },
+    { id: "voc4", word: "Por favor", translation: "Please", examplePt: "Por favor, me ajuda.", exampleEn: "Please, help me.", category: "basics", audioText: "Por favor", audioExample: "Por favor, me ajuda", type: "vocab" },
+    { id: "voc5", word: "Obrigado", translation: "Thank you (masculine)", examplePt: "Muito obrigado!", exampleEn: "Thank you very much!", category: "basics", audioText: "Obrigado", audioExample: "Muito obrigado", type: "vocab" },
+    { id: "voc6", word: "Obrigada", translation: "Thank you (feminine)", examplePt: "Obrigada pelo presente.", exampleEn: "Thank you for the gift.", category: "basics", audioText: "Obrigada", audioExample: "Obrigada pelo presente", type: "vocab" },
+    { id: "voc7", word: "Sim", translation: "Yes", examplePt: "Sim, eu quero.", exampleEn: "Yes, I want it.", category: "basics", audioText: "Sim", audioExample: "Sim, eu quero", type: "vocab" },
+    { id: "voc8", word: "Não", translation: "No", examplePt: "Não, obrigado.", exampleEn: "No, thank you.", category: "basics", audioText: "Não", audioExample: "Não, obrigado", type: "vocab" },
+    { id: "voc9", word: "Pessoa", translation: "Person", examplePt: "Aquela pessoa é legal.", exampleEn: "That person is cool.", category: "people", audioText: "pessoa", audioExample: "Aquela pessoa é legal", type: "vocab" },
+    { id: "voc10", word: "Amigo / Amiga", translation: "Friend", examplePt: "Meu amigo é brasileiro.", exampleEn: "My friend is Brazilian.", category: "people", audioText: "amigo", audioExample: "Meu amigo é brasileiro", type: "vocab" },
+    { id: "voc11", word: "Casa", translation: "House / Home", examplePt: "Minha casa é grande.", exampleEn: "My house is big.", category: "places", audioText: "casa", audioExample: "Minha casa é grande", type: "vocab" },
+    { id: "voc12", word: "Cidade", translation: "City", examplePt: "São Paulo é uma cidade enorme.", exampleEn: "São Paulo is a huge city.", category: "places", audioText: "cidade", audioExample: "São Paulo é uma cidade enorme", type: "vocab" },
+    { id: "voc13", word: "Natureza", translation: "Nature", examplePt: "Eu amo a natureza.", exampleEn: "I love nature.", category: "nature", audioText: "natureza", audioExample: "Eu amo a natureza", type: "vocab" },
+    { id: "voc14", word: "Feliz", translation: "Happy", examplePt: "Estou muito feliz hoje!", exampleEn: "I am very happy today!", category: "emotions", audioText: "feliz", audioExample: "Estou muito feliz hoje", type: "vocab" },
+    { id: "voc15", word: "Triste", translation: "Sad", examplePt: "Ela está triste.", exampleEn: "She is sad.", category: "emotions", audioText: "triste", audioExample: "Ela está triste", type: "vocab" },
+    { id: "voc16", word: "Amor", translation: "Love", examplePt: "O amor é lindo.", exampleEn: "Love is beautiful.", category: "emotions", audioText: "amor", audioExample: "O amor é lindo", type: "vocab" },
+    { id: "voc17", word: "Trabalho", translation: "Work / Job", examplePt: "Meu trabalho é interessante.", exampleEn: "My job is interesting.", category: "daily", audioText: "trabalho", audioExample: "Meu trabalho é interessante", type: "vocab" },
+    { id: "voc18", word: "Escola", translation: "School", examplePt: "Vou à escola todos os dias.", exampleEn: "I go to school every day.", category: "places", audioText: "escola", audioExample: "Vou à escola todos os dias", type: "vocab" },
+    { id: "voc19", word: "Comida", translation: "Food", examplePt: "A comida está deliciosa.", exampleEn: "The food is delicious.", category: "daily", audioText: "comida", audioExample: "A comida está deliciosa", type: "vocab" },
+    { id: "voc20", word: "Água", translation: "Water", examplePt: "Bebo água fresca.", exampleEn: "I drink fresh water.", category: "nature", audioText: "água", audioExample: "Bebo água fresca", type: "vocab" },
+    { id: "voc21", word: "Bom", translation: "Good", examplePt: "Bom dia!", exampleEn: "Good morning!", category: "basics", audioText: "Bom", audioExample: "Bom dia", type: "vocab" },
+    { id: "voc22", word: "Ruim", translation: "Bad", examplePt: "Isso é ruim.", exampleEn: "That is bad.", category: "basics", audioText: "Ruim", audioExample: "Isso é ruim", type: "vocab" },
+    { id: "voc23", word: "Grande", translation: "Big", examplePt: "Uma casa grande.", exampleEn: "A big house.", category: "basics", audioText: "Grande", audioExample: "Uma casa grande", type: "vocab" },
+    { id: "voc24", word: "Pequeno", translation: "Small", examplePt: "Um gato pequeno.", exampleEn: "A small cat.", category: "basics", audioText: "Pequeno", audioExample: "Um gato pequeno", type: "vocab" },
+    { id: "voc25", word: "Bonito", translation: "Beautiful", examplePt: "Que bonito!", exampleEn: "How beautiful!", category: "basics", audioText: "Bonito", audioExample: "Que bonito", type: "vocab" },
+    { id: "voc26", word: "Feio", translation: "Ugly", examplePt: "Isso é feio.", exampleEn: "That is ugly.", category: "basics", audioText: "Feio", audioExample: "Isso é feio", type: "vocab" },
+    { id: "voc27", word: "Dia", translation: "Day", examplePt: "Tenha um bom dia!", exampleEn: "Have a good day!", category: "daily", audioText: "Dia", audioExample: "Tenha um bom dia", type: "vocab" },
+    { id: "voc28", word: "Noite", translation: "Night", examplePt: "Boa noite!", exampleEn: "Good night!", category: "daily", audioText: "Noite", audioExample: "Boa noite", type: "vocab" },
+    { id: "voc29", word: "Sol", translation: "Sun", examplePt: "O sol está quente.", exampleEn: "The sun is hot.", category: "nature", audioText: "Sol", audioExample: "O sol está quente", type: "vocab" },
+    { id: "voc30", word: "Lua", translation: "Moon", examplePt: "A lua está bonita.", exampleEn: "The moon is beautiful.", category: "nature", audioText: "Lua", audioExample: "A lua está bonita", type: "vocab" }
+];
+
+// 70+ high frequency verbs
+const verbsList = [
+    { word: "Ser", translation: "to be (essence)", examplePt: "Eu sou estudante.", exampleEn: "I am a student.", audioWord: "Ser", audioExample: "Eu sou estudante" },
+    { word: "Estar", translation: "to be (state)", examplePt: "Estou cansado.", exampleEn: "I am tired.", audioWord: "Estar", audioExample: "Estou cansado" },
+    { word: "Ter", translation: "to have", examplePt: "Tenho um carro.", exampleEn: "I have a car.", audioWord: "Ter", audioExample: "Tenho um carro" },
+    { word: "Fazer", translation: "to do / make", examplePt: "Faço exercícios.", exampleEn: "I do exercises.", audioWord: "Fazer", audioExample: "Faço exercícios" },
+    { word: "Ir", translation: "to go", examplePt: "Vou à praia.", exampleEn: "I go to the beach.", audioWord: "Ir", audioExample: "Vou à praia" },
+    { word: "Ver", translation: "to see", examplePt: "Vejo televisão.", exampleEn: "I watch TV.", audioWord: "Ver", audioExample: "Vejo televisão" },
+    { word: "Saber", translation: "to know (info)", examplePt: "Sei a resposta.", exampleEn: "I know the answer.", audioWord: "Saber", audioExample: "Sei a resposta" },
+    { word: "Poder", translation: "can / to be able", examplePt: "Posso ajudar.", exampleEn: "I can help.", audioWord: "Poder", audioExample: "Posso ajudar" },
+    { word: "Dizer", translation: "to say/tell", examplePt: "Digo a verdade.", exampleEn: "I tell the truth.", audioWord: "Dizer", audioExample: "Digo a verdade" },
+    { word: "Vir", translation: "to come", examplePt: "Venho de SP.", exampleEn: "I come from SP.", audioWord: "Vir", audioExample: "Venho de SP" },
+    { word: "Dar", translation: "to give", examplePt: "Dou presentes.", exampleEn: "I give gifts.", audioWord: "Dar", audioExample: "Dou presentes" },
+    { word: "Querer", translation: "to want", examplePt: "Quero aprender.", exampleEn: "I want to learn.", audioWord: "Querer", audioExample: "Quero aprender" },
+    { word: "Ficar", translation: "to stay/become", examplePt: "Fico feliz.", exampleEn: "I become happy.", audioWord: "Ficar", audioExample: "Fico feliz" },
+    { word: "Parecer", translation: "to seem", examplePt: "Parece fácil.", exampleEn: "It seems easy.", audioWord: "Parecer", audioExample: "Parece fácil" },
+    { word: "Haver", translation: "there to be", examplePt: "Há muitos livros.", exampleEn: "There are many books.", audioWord: "Haver", audioExample: "Há muitos livros" },
+    { word: "Falar", translation: "to speak", examplePt: "Falo português.", exampleEn: "I speak Portuguese.", audioWord: "Falar", audioExample: "Falo português" },
+    { word: "Sentir", translation: "to feel", examplePt: "Sinto frio.", exampleEn: "I feel cold.", audioWord: "Sentir", audioExample: "Sinto frio" },
+    { word: "Chegar", translation: "to arrive", examplePt: "Chego cedo.", exampleEn: "I arrive early.", audioWord: "Chegar", audioExample: "Chego cedo" },
+    { word: "Continuar", translation: "to continue", examplePt: "Continuo estudando.", exampleEn: "I continue studying.", audioWord: "Continuar", audioExample: "Continuo estudando" },
+    { word: "Amar", translation: "to love", examplePt: "Amo minha família.", exampleEn: "I love my family.", audioWord: "Amar", audioExample: "Amo minha família" },
+    { word: "Pensar", translation: "to think", examplePt: "Penso muito.", exampleEn: "I think a lot.", audioWord: "Pensar", audioExample: "Penso muito" },
+    { word: "Ouvir", translation: "to listen", examplePt: "Ouço música.", exampleEn: "I listen to music.", audioWord: "Ouvir", audioExample: "Ouço música" },
+    { word: "Conhecer", translation: "to know (person/place)", examplePt: "Conheço o Brasil.", exampleEn: "I know Brazil.", audioWord: "Conhecer", audioExample: "Conheço o Brasil" },
+    { word: "Trazer", translation: "to bring", examplePt: "Trago comida.", exampleEn: "I bring food.", audioWord: "Trazer", audioExample: "Trago comida" },
+    { word: "Pedir", translation: "to ask for", examplePt: "Peço ajuda.", exampleEn: "I ask for help.", audioWord: "Pedir", audioExample: "Peço ajuda" },
+    { word: "Encontrar", translation: "to find/meet", examplePt: "Encontro amigos.", exampleEn: "I meet friends.", audioWord: "Encontrar", audioExample: "Encontro amigos" },
+    { word: "Conseguir", translation: "to manage", examplePt: "Consigo terminar.", exampleEn: "I manage to finish.", audioWord: "Conseguir", audioExample: "Consigo terminar" },
+    { word: "Trabalhar", translation: "to work", examplePt: "Trabalho muito.", exampleEn: "I work a lot.", audioWord: "Trabalhar", audioExample: "Trabalho muito" },
+    { word: "Comer", translation: "to eat", examplePt: "Como arroz.", exampleEn: "I eat rice.", audioWord: "Comer", audioExample: "Como arroz" },
+    { word: "Morar", translation: "to live (reside)", examplePt: "Moro no Rio.", exampleEn: "I live in Rio.", audioWord: "Morar", audioExample: "Moro no Rio" },
+    { word: "Chamar", translation: "to call", examplePt: "Chamo meu amigo.", exampleEn: "I call my friend.", audioWord: "Chamar", audioExample: "Chamo meu amigo" },
+    { word: "Esperar", translation: "to wait/hope", examplePt: "Espero o ônibus.", exampleEn: "I wait for the bus.", audioWord: "Esperar", audioExample: "Espero o ônibus" },
+    { word: "Estudar", translation: "to study", examplePt: "Estudo português.", exampleEn: "I study Portuguese.", audioWord: "Estudar", audioExample: "Estudo português" },
+    { word: "Começar", translation: "to start", examplePt: "Começo agora.", exampleEn: "I start now.", audioWord: "Começar", audioExample: "Começo agora" },
+    { word: "Achar", translation: "to think/find", examplePt: "Acho interessante.", exampleEn: "I find it interesting.", audioWord: "Achar", audioExample: "Acho interessante" },
+    { word: "Mudar", translation: "to change", examplePt: "Mudo de casa.", exampleEn: "I move houses.", audioWord: "Mudar", audioExample: "Mudo de casa" },
+    { word: "Perder", translation: "to lose", examplePt: "Perco tempo.", exampleEn: "I lose time.", audioWord: "Perder", audioExample: "Perco tempo" },
+    { word: "Lembrar", translation: "to remember", examplePt: "Lembro de você.", exampleEn: "I remember you.", audioWord: "Lembrar", audioExample: "Lembro de você" },
+    { word: "Entender", translation: "to understand", examplePt: "Entendo tudo.", exampleEn: "I understand everything.", audioWord: "Entender", audioExample: "Entendo tudo" },
+    { word: "Perguntar", translation: "to ask", examplePt: "Pergunto muito.", exampleEn: "I ask a lot.", audioWord: "Perguntar", audioExample: "Pergunto muito" },
+    { word: "Passar", translation: "to spend/pass", examplePt: "Passo férias aqui.", exampleEn: "I spend vacation here.", audioWord: "Passar", audioExample: "Passo férias aqui" },
+    { word: "Comprar", translation: "to buy", examplePt: "Compro pão.", exampleEn: "I buy bread.", audioWord: "Comprar", audioExample: "Compro pão" },
+    { word: "Ler", translation: "to read", examplePt: "Leio livros.", exampleEn: "I read books.", audioWord: "Ler", audioExample: "Leio livros" },
+    { word: "Beber", translation: "to drink", examplePt: "Bebo água.", exampleEn: "I drink water.", audioWord: "Beber", audioExample: "Bebo água" },
+    { word: "Escrever", translation: "to write", examplePt: "Escrevo cartas.", exampleEn: "I write letters.", audioWord: "Escrever", audioExample: "Escrevo cartas" },
+    { word: "Assistir", translation: "to watch", examplePt: "Assisto filmes.", exampleEn: "I watch movies.", audioWord: "Assistir", audioExample: "Assisto filmes" },
+    { word: "Jogar", translation: "to play (game)", examplePt: "Jogo futebol.", exampleEn: "I play soccer.", audioWord: "Jogar", audioExample: "Jogo futebol" },
+    { word: "Aprender", translation: "to learn", examplePt: "Aprendo rápido.", exampleEn: "I learn fast.", audioWord: "Aprender", audioExample: "Aprendo rápido" },
+    { word: "Ensinar", translation: "to teach", examplePt: "Ensino português.", exampleEn: "I teach Portuguese.", audioWord: "Ensinar", audioExample: "Ensino português" },
+    { word: "Viajar", translation: "to travel", examplePt: "Viajo muito.", exampleEn: "I travel a lot.", audioWord: "Viajar", audioExample: "Viajo muito" },
+    { word: "Gostar", translation: "to like", examplePt: "Gosto de música.", exampleEn: "I like music.", audioWord: "Gostar", audioExample: "Gosto de música" },
+    { word: "Dormir", translation: "to sleep", examplePt: "Durmo cedo.", exampleEn: "I sleep early.", audioWord: "Dormir", audioExample: "Durmo cedo" },
+    { word: "Correr", translation: "to run", examplePt: "Corro todos os dias.", exampleEn: "I run every day.", audioWord: "Correr", audioExample: "Corro todos os dias" },
+    { word: "Andar", translation: "to walk", examplePt: "Ando rápido.", exampleEn: "I walk fast.", audioWord: "Andar", audioExample: "Ando rápido" },
+    { word: "Desistir", translation: "to give up", examplePt: "Não desisto fácil.", exampleEn: "I don't give up easily.", audioWord: "Desistir", audioExample: "Não desisto fácil" },
+    { word: "Preferir", translation: "to prefer", examplePt: "Prefiro café.", exampleEn: "I prefer coffee.", audioWord: "Preferir", audioExample: "Prefiro café" },
+    { word: "Resolver", translation: "to solve", examplePt: "Resolvo problemas.", exampleEn: "I solve problems.", audioWord: "Resolver", audioExample: "Resolvo problemas" }
+];
+
+// Combine all items
+const allItems = [];
+
+vocabularyItems.forEach(v => {
+    allItems.push({ ...v, type: "vocab" });
+});
+
+verbsList.forEach((v, index) => {
+    allItems.push({
+        id: `verb_${index}_${v.word}`,
+        word: v.word,
+        translation: v.translation,
+        examplePt: v.examplePt,
+        exampleEn: v.exampleEn,
+        category: "verb",
+        type: "verb",
+        audioText: v.audioWord || v.word,
+        audioExample: v.audioExample || v.examplePt
+    });
+});
+
+// Helper functions
+function escapeHtml(str) { 
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) { 
+        if(m === '&') return '&amp;'; 
+        if(m === '<') return '&lt;'; 
+        if(m === '>') return '&gt;'; 
+        return m;
+    }); 
+}
+
+function escapeAttr(str) { 
+    if (!str) return '';
+    return str.replace(/['"]/g, ''); 
+}
+
+// Audio functions
+function playWordAudio(word) {
+    if (!window.speechSynthesis) {
+        alert("Seu navegador não suporta áudio automático.");
+        return;
+    }
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'pt-BR';
+    utterance.rate = 0.85;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+}
+
+function playExampleAudio(example) {
+    if (!window.speechSynthesis) {
+        alert("Seu navegador não suporta áudio automático.");
+        return;
+    }
+    const utterance = new SpeechSynthesisUtterance(example);
+    utterance.lang = 'pt-BR';
+    utterance.rate = 0.85;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+}
+
+// Render items (UNICA versão - sem duplicação!)
+function renderItems(filterCategory = "all") {
+    const container = document.getElementById("dynamicContentContainer");
+    if (!container) return;
+
+    let filtered = [...allItems];
+    if (filterCategory !== "all") {
+        if (filterCategory === "verb") {
+            filtered = allItems.filter(item => item.type === "verb");
+        } else {
+            filtered = allItems.filter(item => item.category === filterCategory && item.type !== "verb");
+        }
+    }
+
+    let html = `<div class="vocab-grid">`;
+    
+    filtered.forEach(item => {
+        const categoryDisplay = item.type === "verb" ? "🔹 Verb" : (item.category.charAt(0).toUpperCase() + item.category.slice(1));
+        
+        html += `
+            <div class="card-item" data-id="${item.id}">
+                <div class="card-header">
+                    <span class="portuguese-word">${escapeHtml(item.word)}</span>
+                    <span class="badge-category">${categoryDisplay}</span>
+                </div>
+                <div class="translation">${escapeHtml(item.translation)}</div>
+                <div class="example-area">
+                    <div class="example-pt">🇵🇹 ${escapeHtml(item.examplePt)}</div>
+                    <div class="example-en">📘 ${escapeHtml(item.exampleEn)}</div>
+                    <div style="margin-top: 10px; display: flex; gap: 8px; justify-content: space-between;">
+                        <button class="audio-example-btn" data-audio-example="${escapeAttr(item.audioExample || item.examplePt)}" aria-label="Ouvir frase">
+                            <i class="fas fa-headphones"></i> 
+                        </button>
+                        <button class="audio-button" data-audio="${escapeAttr(item.audioText || item.word)}" aria-label="Pronúncia da palavra">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    if(filtered.length === 0) {
+        html = `<div style="text-align: center; padding: 3rem;">✨ Nenhuma palavra encontrada. ✨</div>`;
+    } else {
+        html += `</div>`;
+    }
+    
+    container.innerHTML = html;
+    
+    // Attach word audio events
+    document.querySelectorAll('.audio-button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const text = btn.getAttribute('data-audio');
+            if (text) {
+                playWordAudio(text);
+            }
+        });
+    });
+    
+    // Attach example audio events
+    document.querySelectorAll('.audio-example-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const text = btn.getAttribute('data-audio-example');
+            if (text) {
+                playExampleAudio(text);
+            }
+        });
+    });
+}
+
+// Initialize filters
+function initFilters() {
+    const buttons = document.querySelectorAll('.filter-pill');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filterVal = btn.getAttribute('data-filter');
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderItems(filterVal);
+        });
+    });
+}
+
+// Home reset button
+document.getElementById("homeResetBtn")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    const allFilter = document.querySelector('.filter-pill[data-filter="all"]');
+    if(allFilter) {
+        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        allFilter.classList.add('active');
+        renderItems("all");
+    } else {
+        renderItems("all");
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Logo click
+document.querySelector('.logo')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const allBtn = document.querySelector('.filter-pill[data-filter="all"]');
+    if(allBtn) allBtn.click();
+});
+
+// Initial load
+renderItems("all");
+initFilters();
+</script>
+</body>
+</html>
